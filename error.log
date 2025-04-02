@@ -47,3 +47,34 @@
 [01-Apr-2025 16:32:24 Europe/Berlin] PHP Warning:  include(): Failed opening 'ingreso.php' for inclusion (include_path='D:\xampp\php\PEAR') in D:\Onedrive\www\sponsors\vistas\plantilla.php on line 84
 [01-Apr-2025 16:37:07 Europe/Berlin] PHP Warning:  include(paginas/ingreso/sls.php): Failed to open stream: No such file or directory in D:\Onedrive\www\sponsors\vistas\plantilla.php on line 80
 [01-Apr-2025 16:37:07 Europe/Berlin] PHP Warning:  include(): Failed opening 'paginas/ingreso/sls.php' for inclusion (include_path='D:\xampp\php\PEAR') in D:\Onedrive\www\sponsors\vistas\plantilla.php on line 80
+[02-Apr-2025 17:24:52 Europe/Berlin] PHP Warning:  Undefined variable $tu_conexion_mysqli in D:\Onedrive\www\sponsors\vistas\paginas\ingreso\registro.php on line 281
+[02-Apr-2025 17:24:52 Europe/Berlin] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in D:\Onedrive\www\sponsors\vistas\paginas\ingreso\registro.php:265
+Stack trace:
+#0 D:\Onedrive\www\sponsors\vistas\paginas\ingreso\registro.php(281): codigoPatrocinadorUnico(NULL)
+#1 D:\Onedrive\www\sponsors\vistas\plantilla.php(75): include('D:\\Onedrive\\www...')
+#2 D:\Onedrive\www\sponsors\controladores\plantilla.controlador.php(7): include('D:\\Onedrive\\www...')
+#3 D:\Onedrive\www\sponsors\index.php(25): ControladorPlantilla->ctrPlantilla()
+#4 {main}
+  thrown in D:\Onedrive\www\sponsors\vistas\paginas\ingreso\registro.php on line 265
+[02-Apr-2025 17:35:31 Europe/Berlin] PHP Warning:  Undefined variable $codigoSponsor in D:\Onedrive\www\sponsors\vistas\paginas\ingreso\registro.php on line 110
+[02-Apr-2025 17:39:36 Europe/Berlin] PHP Fatal error:  Uncaught Error: Call to undefined method ControladorUsuarios::codigoSponsor() in D:\Onedrive\www\sponsors\vistas\paginas\ingreso\registro.php:110
+Stack trace:
+#0 D:\Onedrive\www\sponsors\vistas\plantilla.php(75): include()
+#1 D:\Onedrive\www\sponsors\controladores\plantilla.controlador.php(7): include('D:\\Onedrive\\www...')
+#2 D:\Onedrive\www\sponsors\index.php(25): ControladorPlantilla->ctrPlantilla()
+#3 {main}
+  thrown in D:\Onedrive\www\sponsors\vistas\paginas\ingreso\registro.php on line 110
+[02-Apr-2025 17:40:34 Europe/Berlin] PHP Fatal error:  Uncaught Error: Call to undefined method ControladorUsuarios::codigoSponsor() in D:\Onedrive\www\sponsors\vistas\paginas\ingreso\registro.php:110
+Stack trace:
+#0 D:\Onedrive\www\sponsors\vistas\plantilla.php(75): include()
+#1 D:\Onedrive\www\sponsors\controladores\plantilla.controlador.php(7): include('D:\\Onedrive\\www...')
+#2 D:\Onedrive\www\sponsors\index.php(25): ControladorPlantilla->ctrPlantilla()
+#3 {main}
+  thrown in D:\Onedrive\www\sponsors\vistas\paginas\ingreso\registro.php on line 110
+[02-Apr-2025 17:40:48 Europe/Berlin] PHP Fatal error:  Uncaught Error: Call to undefined method ControladorUsuarios::codigoSponsor() in D:\Onedrive\www\sponsors\vistas\paginas\ingreso\registro.php:110
+Stack trace:
+#0 D:\Onedrive\www\sponsors\vistas\plantilla.php(75): include()
+#1 D:\Onedrive\www\sponsors\controladores\plantilla.controlador.php(7): include('D:\\Onedrive\\www...')
+#2 D:\Onedrive\www\sponsors\index.php(25): ControladorPlantilla->ctrPlantilla()
+#3 {main}
+  thrown in D:\Onedrive\www\sponsors\vistas\paginas\ingreso\registro.php on line 110

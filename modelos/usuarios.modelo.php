@@ -48,8 +48,8 @@ class ModeloUsuarios{
     (:cedula, :nombre, :apellido, :fecha_nacimiento, :sexo, :nacionalidad, :estado, :municipio, :direccion)");
 
 		$stmt->bindParam(":cedula", $datos["cedula"], PDO::PARAM_STR);
-    $stmt->bindParam(":nombre", $datos["nombre"], PDO::PARAM_STR);
-    $stmt->bindParam(":apellido", $datos["apellido"], PDO::PARAM_STR);
+		$stmt->bindParam(":nombre", $datos["nombre"], PDO::PARAM_STR);
+		$stmt->bindParam(":apellido", $datos["apellido"], PDO::PARAM_STR);
 		$stmt->bindParam(":fecha_nacimiento", $datos["fecha_nacimiento"], PDO::PARAM_STR);
 		$stmt->bindParam(":sexo", $datos["sexo"], PDO::PARAM_STR);
 		$stmt->bindParam(":nacionalidad", $datos["nacionalidad"], PDO::PARAM_STR);
@@ -181,5 +181,7 @@ class ModeloUsuarios{
 
 
 	}
+
+
 
 }

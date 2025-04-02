@@ -18,6 +18,7 @@ require_once "controladores/ruta.controlador.php";
 
 require_once "controladores/usuarios.controlador.php";
 require_once "modelos/usuarios.modelo.php";
+require_once "modelos/conexion.php";
 
 
 $plantilla = new ControladorPlantilla();

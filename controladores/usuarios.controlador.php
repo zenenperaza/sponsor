@@ -13,7 +13,7 @@ class ControladorUsuarios{
 
 			if(preg_match('/^[^0-9][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[@][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,4}$/', $_POST["email"])){
                 
-        $encriptar = crypt($_POST["password"], '$2a$07$asxx54ahjppf45sd87a5a4dDDGsystemdev$');
+        		$encriptar = crypt($_POST["password"], '$2a$07$asxx54ahjppf45sd87a5a4dDDGsystemdev$');
 
 				$tabla = "usuarios";
 
@@ -22,8 +22,7 @@ class ControladorUsuarios{
 
 				$respuesta = ModeloUsuarios::MdlMostrarUsuarios($tabla, $item, $valor);
 
-				if($respuesta["email"] == $_POST["email"] && $respuesta["password"] == $encriptar){
-                    
+				if($respuesta["email"] == $_POST["email"] && $respuesta["password"] == $encriptar){               
         
 
 						$_SESSION["iniciarSesion"] = "ok";
@@ -45,13 +44,14 @@ class ControladorUsuarios{
 
 					echo '<br><div class="alert alert-danger">Error al ingresar, Datos incorrectos, vuelve a intentarlo</div>';
 
-				}
+					}
 
 				}
 
 			}	
 
-		}
+	
+	}
 
     
     	/*=============================================
@@ -62,12 +62,11 @@ class ControladorUsuarios{
 
 		if(isset($_POST["btnAgregarUsuario"])){
       
-      if($_POST["password"] === $_POST["password2"]){
-       
+      		if($_POST["password"] === $_POST["password2"]){   
       
 
-			if(preg_match('/^[a-zA-ZñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["nombre"]) &&
-			   preg_match('/^[^0-9][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[@][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,4}$/', $_POST["email"])){
+				if(preg_match('/^[a-zA-ZñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["nombre"]) &&
+			  	 preg_match('/^[^0-9][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[@][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,4}$/', $_POST["email"])){
 
 			   /*=============================================
 				VALIDAR IMAGEN
@@ -344,11 +343,59 @@ class ControladorUsuarios{
               </script>';
         
 
-			}		
-    
+			}   
 
+		}
+	}
+
+
+	
+	
+static public function generarCodigoPatrocinador($longitud = 6) {
+    $caracteres = 'ABCDEFGHIJKLMNPQRSTUVWXYZ23456789'; // Excluye 0, O, 1 para evitar confusiones
+    $max = strlen($caracteres) - 1;
+    $codigo = '';
+    
+    for ($i = 0; $i < $longitud; $i++) {
+        $codigo .= $caracteres[random_int(0, $max)]; // Usamos random_int para mejor seguridad
+    }
+    
+    return $codigo;
 }
+
+static public function codigoPatrocinadorUnico() {
+    try {
+        $conexion = (new Conexion())->conectar();
+        $intentos = 0;
+        $max_intentos = 10;
+
+        while ($intentos < $max_intentos) {
+            $codigo = ControladorUsuarios::generarCodigoPatrocinador();
+
+		
+            
+            $stmt = $conexion->prepare("SELECT COUNT(id) FROM usuarios WHERE id_patrocinador = :codigo");
+            $stmt->bindParam(':codigo', $codigo, PDO::PARAM_STR);
+            $stmt->execute();
+            
+            if ($stmt->fetchColumn() == 0) {
+                return $codigo;
+            }
+            
+            $intentos++;
+        }
+        
+        return false;
+        
+    } catch (Exception $e) {
+        error_log("Error generando código: " . $e->getMessage());
+        return false;
+    }
 }
+
+// Uso del código
+
+
 }
 	
 

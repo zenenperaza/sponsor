@@ -5,3 +5,7 @@
     font-size: xxx-large;
 
 }
+
+.auth-page-content .container {
+    margin-top: -30px;
+}
