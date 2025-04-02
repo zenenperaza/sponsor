@@ -1,0 +1,185 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #f5f7fa;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h1 {
+    color: #2c3e50;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+#search {
+    padding: 10px 15px;
+    width: 300px;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    font-size: 14px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    outline: none;
+}
+
+svg {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    width: 95%;
+    height: 700px;    
+    padding-top: 10px;
+}
+
+.link {
+    fill: none;
+    stroke: #bdc3c7;
+    stroke-width: 1px;
+    z-index: 1; /* Líneas detrás de los nodos */
+}
+
+.node-group {
+    z-index: 2; /* Nodos sobre las líneas */
+}
+
+.expand-btn-circle {
+    fill: #3498db;
+    stroke: white;
+    stroke-width: 2px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    z-index: 3; /* Botón sobre todo */
+}
+
+.node-body {
+    fill: white;
+    stroke: #3498db;
+    stroke-width: 1.5px;
+    rx: 10;
+    ry: 10;
+    z-index: 10; /* Asegura que el nodo esté sobre las líneas */
+}
+
+.node-card {
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.node-card:hover {
+    filter: drop-shadow(0 0 8px rgba(52, 152, 219, 0.3));
+}
+
+
+
+.node-title {
+    font-size: 12px;
+    font-weight: bold;
+    fill: #2c3e50;
+}
+
+.node-detail {
+    font-size: 10px;
+    fill: #7f8c8d;
+}
+
+.node-photo {
+    clip-path: circle(22px at center);
+}
+
+.expand-btn {
+    fill: #3498db;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.expand-btn:hover {
+    fill: #2980b9;
+}
+
+
+.info-card {
+    position: absolute;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    padding: 20px;
+    width: 250px;
+    display: none;
+    z-index: 100;    
+    bottom: 0;
+    right: 0;
+}
+
+.tooltip {
+    position: absolute;
+    background: rgba(0,0,0,0.7);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 12px;
+    display: none;
+    pointer-events: none;
+    z-index: 100;
+}
+
+.sponsor-info {
+    font-size: 9px;
+    fill: #3498db;
+    white-space: nowrap; /* Evita salto de línea */
+    text-overflow: ellipsis; /* Añade ... si el texto es muy largo */
+    width: 100px; /* Ancho máximo para el texto */
+}
+
+.node-info-container {
+    width: 110px;
+}
+
+
+
+.expand-btn-circle:hover {
+    fill: #2980b9;
+    transform: scale(1.05);
+}
+
+.expand-text {
+    font-size: 14px;
+    font-weight: bold;
+    fill: white;
+    text-anchor: middle;
+    dominant-baseline: middle;
+    pointer-events: none;
+}
+
+.node-name {
+    font-size: 14px;
+    /* font-weight: bold; */
+    fill: #3498db;
+}
+
+#controls {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    display: flex;
+    gap: 10px;
+}
+
+#controls button {
+    background-color: #2c3e50;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+#controls button:hover {
+    background-color: #1a252f;
+}
+
+
+
