@@ -25,6 +25,7 @@ $ruta = ControladorRuta::ctrRuta();
 
 <head>
 
+    <base href="vistas">
     <meta charset="utf-8" />
     <title>Dashboard | Velzon - Admin & Dashboard Template</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -39,8 +40,6 @@ $ruta = ControladorRuta::ctrRuta();
     <!--Swiper slider css-->
     <link href="vistas/assets/libs/swiper/swiper-bundle.min.css" rel="stylesheet" type="text/css" />
 
-    <!-- Layout config Js -->
-    <script src="vistas/assets/js/layout.js"></script>
     <!-- Bootstrap Css -->
     <link href="vistas/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <!-- Icons Css -->
