@@ -103,3 +103,28 @@ Stack trace:
 [03-Apr-2025 18:02:17 Europe/Berlin] Error de login: Solicitud inválida
 [03-Apr-2025 18:02:51 Europe/Berlin] Error de login: Solicitud inválida
 [03-Apr-2025 18:11:27 Europe/Berlin] Error de login: Solicitud inválida
+[03-Apr-2025 19:39:12 Europe/Berlin] Error de login: Solicitud inválida
+[03-Apr-2025 19:39:18 Europe/Berlin] Error de login: Solicitud inválida
+[03-Apr-2025 19:41:03 Europe/Berlin] Error de login: Solicitud inválida
+[03-Apr-2025 19:41:40 Europe/Berlin] Error de login: Solicitud inválida
+[03-Apr-2025 19:42:33 Europe/Berlin] Error de login: Solicitud inválida
+[03-Apr-2025 19:43:14 Europe/Berlin] Error de login: Solicitud inválida
+[03-Apr-2025 19:43:19 Europe/Berlin] Error de login: Solicitud inválida
+[03-Apr-2025 19:43:47 Europe/Berlin] Error de login: SQLSTATE[HY000] [2002] No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión
+[03-Apr-2025 19:44:52 Europe/Berlin] Error de login: Credenciales incorrectas
+[03-Apr-2025 19:45:04 Europe/Berlin] Error de login: Credenciales incorrectas
+[03-Apr-2025 19:47:29 Europe/Berlin] Error de login: Solicitud inválida
+[03-Apr-2025 19:47:38 Europe/Berlin] Error de login: Demasiados intentos fallidos. Espere 5 segundos
+[03-Apr-2025 19:48:39 Europe/Berlin] Error de login: Solicitud inválida
+[03-Apr-2025 19:48:48 Europe/Berlin] Error de login: Demasiados intentos fallidos. Espere 5 segundos
+[03-Apr-2025 20:00:35 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type bool in D:\Onedrive\www\sponsors\controladores\usuarios.controlador.php on line 25
+[03-Apr-2025 20:14:12 Europe/Berlin] PHP Warning:  include(paginas/modulos/header.php): Failed to open stream: No such file or directory in D:\Onedrive\www\sponsors\vistas\plantilla.php on line 107
+[03-Apr-2025 20:14:12 Europe/Berlin] PHP Warning:  include(): Failed opening 'paginas/modulos/header.php' for inclusion (include_path='D:\xampp\php\PEAR') in D:\Onedrive\www\sponsors\vistas\plantilla.php on line 107
+[03-Apr-2025 20:14:12 Europe/Berlin] PHP Warning:  include(paginas/modulos/menu.php): Failed to open stream: No such file or directory in D:\Onedrive\www\sponsors\vistas\plantilla.php on line 108
+[03-Apr-2025 20:14:12 Europe/Berlin] PHP Warning:  include(): Failed opening 'paginas/modulos/menu.php' for inclusion (include_path='D:\xampp\php\PEAR') in D:\Onedrive\www\sponsors\vistas\plantilla.php on line 108
+[03-Apr-2025 20:14:12 Europe/Berlin] PHP Warning:  include(paginas/inicio/inicio.php): Failed to open stream: No such file or directory in D:\Onedrive\www\sponsors\vistas\plantilla.php on line 120
+[03-Apr-2025 20:14:12 Europe/Berlin] PHP Warning:  include(): Failed opening 'paginas/inicio/inicio.php' for inclusion (include_path='D:\xampp\php\PEAR') in D:\Onedrive\www\sponsors\vistas\plantilla.php on line 120
+[03-Apr-2025 20:14:12 Europe/Berlin] PHP Warning:  include(paginas/modulos/footer.php): Failed to open stream: No such file or directory in D:\Onedrive\www\sponsors\vistas\plantilla.php on line 133
+[03-Apr-2025 20:14:12 Europe/Berlin] PHP Warning:  include(): Failed opening 'paginas/modulos/footer.php' for inclusion (include_path='D:\xampp\php\PEAR') in D:\Onedrive\www\sponsors\vistas\plantilla.php on line 133
+[03-Apr-2025 20:16:42 Europe/Berlin] PHP Warning:  include(paginas/modulos/footer.php): Failed to open stream: No such file or directory in D:\Onedrive\www\sponsors\vistas\plantilla.php on line 133
+[03-Apr-2025 20:16:42 Europe/Berlin] PHP Warning:  include(): Failed opening 'paginas/modulos/footer.php' for inclusion (include_path='D:\xampp\php\PEAR') in D:\Onedrive\www\sponsors\vistas\plantilla.php on line 133

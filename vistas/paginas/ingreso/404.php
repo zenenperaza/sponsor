@@ -1,3 +1,8 @@
+<style>
+    body { 
+        background: linear-gradient(-45deg, #405189 50%, #0ab39c)
+    }
+</style>
 <!doctype html>
 <html lang="en" data-layout="vertical" data-topbar="light" data-sidebar="dark" data-sidebar-size="lg" data-sidebar-image="none">
 

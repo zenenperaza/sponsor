@@ -1,3 +1,8 @@
+<style>
+    body { 
+        background: linear-gradient(-45deg, #405189 50%, #0ab39c)
+    }
+</style>
 <!-- Layout config Js -->
 <script src="vistas/assets/js/layout.js"></script>
 <!-- Bootstrap Css -->

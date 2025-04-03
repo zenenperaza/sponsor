@@ -188,7 +188,7 @@ static public function ctrLoginUsuario(){
     
 
                     $_SESSION["iniciarSesion"] = "ok";
-                    $_SESSION["id"] = $respuesta["id_usuario"];
+                    $_SESSION["id"] = $respuesta["id"];
                     $_SESSION["nombre"] = $respuesta["nombre"];
                     $_SESSION["apellido"] = $respuesta["apellido"];
                     $_SESSION["email"] = $respuesta["email"];

@@ -19,32 +19,28 @@ foreach ($routesArray as $key => $value) {
 
 $ruta = ControladorRuta::ctrRuta();
 
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\SMTP;
-use PHPMailer\PHPMailer\Exception;
 ?>
-<!DOCTYPE html>
-<html lang="es">
+<!doctype html>
+<html lang="en" data-layout="vertical" data-topbar="light" data-sidebar="dark" data-sidebar-size="lg" data-sidebar-image="none">
+
 <head>
 
+    <meta charset="utf-8" />
+    <title>Dashboard | Velzon - Admin & Dashboard Template</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
+    <meta content="Themesbrand" name="author" />
+    <!-- App favicon -->
+    <link rel="shortcut icon" href="vistas/assets/images/favicon.ico">
 
-  <base href="<?php echo $ruta?>">
-  <meta charset="UTF-8">
-  <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-  <title>Sistema de Sponsors</title>
-  <link rel="icon" href="vistas/images/sistema/icon.png">
-
-  <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
-  <meta content="Themesbrand" name="author" />
     <!-- jsvectormap css -->
     <link href="vistas/assets/libs/jsvectormap/css/jsvectormap.min.css" rel="stylesheet" type="text/css" />
 
     <!--Swiper slider css-->
     <link href="vistas/assets/libs/swiper/swiper-bundle.min.css" rel="stylesheet" type="text/css" />
-    <!-- Sweet Alert css-->
-    <link href="vistas/assets/libs/sweetalert2/sweetalert2.min.css" rel="stylesheet" type="text/css" />
+
     <!-- Layout config Js -->
-    
+    <script src="vistas/assets/js/layout.js"></script>
     <!-- Bootstrap Css -->
     <link href="vistas/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <!-- Icons Css -->
@@ -54,10 +50,17 @@ use PHPMailer\PHPMailer\Exception;
     <!-- custom Css-->
     <link href="vistas/assets/css/custom.min.css" rel="stylesheet" type="text/css" />
 
+    
+    <link href="vistas/assets/libs/sweetalert2/sweetalert2.min.css" rel="stylesheet" type="text/css" />
+
 </head>
 
-<body style="background: linear-gradient(-45deg, #405189 50%, #0ab39c);">
+<body>
 
+    <!-- Begin page -->
+    <div id="layout-wrapper">
+
+    
 <?php
   
   if(!isset($_SESSION["iniciarSesion"])){
@@ -115,7 +118,7 @@ if(!empty($routesArray[2])){
          $routesArray[2] == "admin" ||
          $routesArray[2] == "consejeros" ||
          $routesArray[2] == "template" ||
-          $routesArray[2] == "salir"){  
+         $routesArray[2] == "logout"){  
         
         include "paginas/".$routesArray[2]."/".$routesArray[2].".php";       
         
@@ -144,10 +147,6 @@ if(!empty($routesArray[2])){
     <script src="vistas/assets/js/pages/plugins/lord-icon-2.1.0.js"></script>
     <script src="vistas/assets/js/plugins.js"></script>
 
-    <!-- particles js -->
-    <script src="vistas/assets/libs/particles.js/particles.js"></script>
-    <!-- particles app js -->
-    <script src="vistas/assets/js/pages/particles.app.js"></script>
     <!-- password-addon init -->
     <script src="vistas/assets/js/pages/password-addon.init.js"></script>
         <!-- Sweet Alerts js -->
@@ -156,6 +155,26 @@ if(!empty($routesArray[2])){
     <!-- Sweet alert init js-->
     <script src="vistas/assets/js/pages/sweetalerts.init.js"></script>
 
+</body>
+
+</html>
+
+
+    <!-- apexcharts -->
+    <script src="vistas/assets/libs/apexcharts/apexcharts.min.js"></script>
+
+    <!-- Vector map-->
+    <script src="vistas/assets/libs/jsvectormap/js/jsvectormap.min.js"></script>
+    <script src="vistas/assets/libs/jsvectormap/maps/world-merc.js"></script>
+
+    <!--Swiper slider js-->
+    <script src="vistas/assets/libs/swiper/swiper-bundle.min.js"></script>
+
+    <!-- Dashboard init -->
+    <script src="vistas/assets/js/pages/dashboard-ecommerce.init.js"></script>
+
+    <!-- App js -->
+    <script src="vistas/assets/js/app.js"></script>
 </body>
 
 </html>

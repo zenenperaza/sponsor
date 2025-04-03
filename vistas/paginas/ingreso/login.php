@@ -1,6 +1,11 @@
 <?php
 $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
 ?>
+<style>
+    body { 
+        background: linear-gradient(-45deg, #405189 50%, #0ab39c)
+    }
+</style>
     <!-- Layout config Js -->
     <script src="vistas/assets/js/layout.js"></script>
     <!-- Bootstrap Css -->
@@ -66,7 +71,7 @@ $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
                                         </div>
 
                                         <div class="mt-4">
-                                            <button class="btn btn-success w-100" type="submit" name="btnLogin">Sign In</button>
+                                            <button class="btn btn-success w-100" type="submit" name="btnLoginUsuario">Sign In</button>
                                         </div>
 
                                     </form>
@@ -119,6 +124,12 @@ $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
     <script src="vistas/assets/js/pages/particles.app.js"></script>
     <!-- password-addon init -->
     <script src="vistas/assets/js/pages/password-addon.init.js"></script>
+
+    <!-- Sweet Alerts js -->
+    <script src="vistas/assets/libs/sweetalert2/sweetalert2.min.js"></script>
+        
+    <!-- Sweet alert init js-->
+    <script src="vistas/assets/js/pages/sweetalerts.init.js"></script>
 </body>
 
 </html>

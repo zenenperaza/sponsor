@@ -8,87 +8,57 @@ class ControladorUsuarios{
 	=============================================*/
 
     static public function ctrLoginUsuario(){
-        try {
-            // Verificar método POST y token CSRF
-            if ($_SERVER['REQUEST_METHOD'] !== 'POST' || !isset($_POST['csrf_token']) || $_POST['csrf_token'] !== $_SESSION['csrf_token']) {
-                throw new Exception('Solicitud inválida');
-            }
-    
-            // Validar campos obligatorios
-            $camposRequeridos = ['email', 'password'];
-            foreach ($camposRequeridos as $campo) {
-                if (empty($_POST[$campo])) {
-                    throw new Exception('Por favor complete todos los campos');
-                }
-            }
-    
-            // Sanitizar y validar email
-            $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
-            if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-                throw new Exception('Formato de email inválido');
-            }
-    
-            // Validar política de contraseña
-            $password = $_POST['password'];
-            if (strlen($password) < 6) {
-                throw new Exception('La contraseña debe tener al menos 8 caracteres');
-            }
-    
-            // Buscar usuario en la base de datos
-            $usuario = ModeloUsuarios::MdlMostrarUsuarios('usuarios', 'email', $email);
-    
-            // Verificar existencia de usuario
-            if (!$usuario || !isset($usuario['email'])) {
-                error_log("Intento de login fallido para: $email");
-                throw new Exception('Credenciales incorrectas');
-            }
-    
-            // Verificar contraseña
-            if (!password_verify(md5($password), $usuario['password'])) {
-                // Registrar intento fallido
-                $_SESSION['intentos_fallidos'] = ($_SESSION['intentos_fallidos'] ?? 0) + 1;
+
+        if(isset($_POST["btnLoginUsuario"])){
+
+            if(preg_match('/^[^0-9][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[@][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,4}$/', $_POST["email"])){
                 
-                // Bloquear después de 3 intentos
-                if ($_SESSION['intentos_fallidos'] >= 3) {
-                    sleep(5); // Retraso anti brute-force
-                    throw new Exception('Demasiados intentos fallidos. Espere 5 segundos');
-                }
+                $encriptarPassword = crypt($_POST["password"], '$2a$07$asxx54ahjppf45sd87a5a4dDDGsystemdev$');
+    
+                $tabla = "usuarios";
+    
+                $item = "email";
+                $valor = $_POST["email"];
+
+                // var_dump($_POST);
+                // return;
+    
+                $respuesta = ModeloUsuarios::MdlMostrarUsuarios($tabla, $item, $valor);
+
                 
-                throw new Exception('Credenciales incorrectas');
-            }
+                // var_dump($encriptarPassword);
+                // return;
     
-            // Verificar cuenta activa/verificada
-            if ($usuario['verificacion'] != 1) {
-                throw new Exception('Cuenta no verificada. Revise su email');
-            }
+                if($respuesta["email"] == $_POST["email"] && $respuesta["password"] == $encriptarPassword){     
+        
     
-            // Iniciar sesión segura
-            session_regenerate_id(true);
-            
-            $_SESSION["user"] = [
-                "id" => $usuario['id'],
-                "nombre" => $usuario['nombre'],
-                "apellido" => $usuario['apellido'],
-                "email" => $usuario['email'],
-                "perfil" => $usuario['perfil'],
-                "last_login" => time()
-            ];
+                        $_SESSION["iniciarSesion"] = "ok";
+                        $_SESSION["id"] = $respuesta["id_usuario"];
+                        $_SESSION["nombre"] = $respuesta["nombre"];
+                        $_SESSION["apellido"] = $respuesta["apellido"];
+                        $_SESSION["email"] = $respuesta["email"];
+                        $_SESSION["foto"] = $respuesta["foto"];
+                        $_SESSION["perfil"] = $respuesta["perfil"];
     
-            // Limpiar intentos fallidos
-            unset($_SESSION['intentos_fallidos']);
+                        
+                            echo '<script>
     
-            // Redirección segura
-            header('Location: inicio');
-            exit();
+                                window.location = "inicio";
     
-        } catch (Exception $e) {
-            // Manejo centralizado de errores
-            error_log("Error de login: " . $e->getMessage());
-            $_SESSION['error_login'] = $e->getMessage();
-            self::mostrarError( $_SESSION['error_login']);
-            exit();
+                            </script>';
+    
+                        }		else{
+    
+                    echo '<br><div class="alert alert-danger">Error al ingresar, Datos incorrectos, vuelve a intentarlo</div>';
+    
+                    }
+    
+                }
+    
+            }	   
+    
         }
-    }
+    
     
 /*=============================================
 Registro de usuarios
@@ -142,7 +112,7 @@ static public function ctrRegistroUsuario(){
         }
 
         // Encriptar credenciales
-        $encriptarPassword = password_hash($_POST["password"], PASSWORD_DEFAULT);
+        $encriptarPassword = crypt($_POST["password"], '$2a$07$asxx54ahjppf45sd87a5a4dDDGsystemdev$');
         $encriptarEmail = md5($_POST["email"]);
 
         // Preparar datos para registro
