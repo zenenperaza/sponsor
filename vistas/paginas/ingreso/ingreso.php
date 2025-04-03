@@ -22,7 +22,7 @@
                     <div class="col-lg-12">
                         <div class="text-center text-white-50">
                         <div class="text-center">
-                                <a href="index.html" class="d-inline-block auth-logo text-center">
+                                <a href="ingreso" class="d-inline-block auth-logo text-center">
                                     <img src="vistas/images/sistema/logo.png" alt="" height="100">
                                 </a>
                             </div>

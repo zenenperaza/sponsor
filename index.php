@@ -20,6 +20,10 @@ require_once "controladores/usuarios.controlador.php";
 require_once "modelos/usuarios.modelo.php";
 require_once "modelos/conexion.php";
 
+require 'extensiones/PHPMailer/src/Exception.php';
+require 'extensiones/PHPMailer/src/PHPMailer.php';
+require 'extensiones/PHPMailer/src/SMTP.php';
+
 
 $plantilla = new ControladorPlantilla();
 $plantilla -> ctrPlantilla();

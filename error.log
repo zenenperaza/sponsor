@@ -78,3 +78,27 @@ Stack trace:
 #2 D:\Onedrive\www\sponsors\index.php(25): ControladorPlantilla->ctrPlantilla()
 #3 {main}
   thrown in D:\Onedrive\www\sponsors\vistas\paginas\ingreso\registro.php on line 110
+[03-Apr-2025 00:37:35 Europe/Berlin] PHP Parse error:  syntax error, unexpected token "public", expecting "::" in D:\Onedrive\www\sponsors\controladores\usuarios.controlador.php on line 378
+[03-Apr-2025 01:23:53 Europe/Berlin] PHP Parse error:  syntax error, unexpected token "class", expecting "," or ";" in D:\Onedrive\www\sponsors\controladores\usuarios.controlador.php on line 67
+[03-Apr-2025 16:22:05 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type bool in D:\Onedrive\www\sponsors\controladores\usuarios.controlador.php on line 180
+[03-Apr-2025 16:22:05 Europe/Berlin] PHP Warning:  Undefined array key "perfil" in D:\Onedrive\www\sponsors\controladores\usuarios.controlador.php on line 226
+[03-Apr-2025 16:22:05 Europe/Berlin] PHP Warning:  Undefined array key "detalle_ip" in D:\Onedrive\www\sponsors\controladores\usuarios.controlador.php on line 229
+[03-Apr-2025 16:22:05 Europe/Berlin] PHP Fatal error:  Uncaught Error: Call to undefined method ModeloUsuarios::mdlRegistroUsuario() in D:\Onedrive\www\sponsors\controladores\usuarios.controlador.php:236
+Stack trace:
+#0 D:\Onedrive\www\sponsors\vistas\paginas\ingreso\registro.php(252): ControladorUsuarios::ctrRegistroUsuario()
+#1 D:\Onedrive\www\sponsors\vistas\plantilla.php(80): include('D:\\Onedrive\\www...')
+#2 D:\Onedrive\www\sponsors\controladores\plantilla.controlador.php(7): include('D:\\Onedrive\\www...')
+#3 D:\Onedrive\www\sponsors\index.php(29): ControladorPlantilla->ctrPlantilla()
+#4 {main}
+  thrown in D:\Onedrive\www\sponsors\controladores\usuarios.controlador.php on line 236
+[03-Apr-2025 17:56:35 Europe/Berlin] PHP Warning:  Undefined array key "csrf_token" in D:\Onedrive\www\sponsors\vistas\paginas\ingreso\login.php on line 44
+[03-Apr-2025 17:56:35 Europe/Berlin] Error de login: Solicitud inválida
+[03-Apr-2025 17:56:35 Europe/Berlin] PHP Warning:  Cannot modify header information - headers already sent by (output started at D:\Onedrive\www\sponsors\vistas\paginas\ingreso\login.php:44) in D:\Onedrive\www\sponsors\controladores\usuarios.controlador.php on line 88
+[03-Apr-2025 17:57:10 Europe/Berlin] Error de login: Solicitud inválida
+[03-Apr-2025 17:57:10 Europe/Berlin] PHP Warning:  Cannot modify header information - headers already sent by (output started at D:\Onedrive\www\sponsors\vistas\paginas\ingreso\login.php:46) in D:\Onedrive\www\sponsors\controladores\usuarios.controlador.php on line 88
+[03-Apr-2025 18:00:37 Europe/Berlin] Error de login: Solicitud inválida
+[03-Apr-2025 18:00:37 Europe/Berlin] PHP Warning:  Cannot modify header information - headers already sent by (output started at D:\Onedrive\www\sponsors\vistas\paginas\ingreso\login.php:46) in D:\Onedrive\www\sponsors\controladores\usuarios.controlador.php on line 88
+[03-Apr-2025 18:00:39 Europe/Berlin] Error de login: Solicitud inválida
+[03-Apr-2025 18:00:39 Europe/Berlin] PHP Warning:  Cannot modify header information - headers already sent by (output started at D:\Onedrive\www\sponsors\vistas\paginas\ingreso\login.php:46) in D:\Onedrive\www\sponsors\controladores\usuarios.controlador.php on line 88
+[03-Apr-2025 18:02:17 Europe/Berlin] Error de login: Solicitud inválida
+[03-Apr-2025 18:02:51 Europe/Berlin] Error de login: Solicitud inválida

@@ -41,36 +41,42 @@ class ModeloUsuarios{
 	REGISTRO DE USUARIO
 	=============================================*/
 
-	static public function mdlIngresarUsuario($tabla, $datos){
+	static public function mdlRegistroUsuario($tabla, $datos){
 
 		$stmt = Conexion::conectar()->prepare("INSERT INTO $tabla 
-    (cedula, nombre, apellido, fecha_nacimiento, sexo, nacionalidad, estado, municipio, direccion) VALUES 
-    (:cedula, :nombre, :apellido, :fecha_nacimiento, :sexo, :nacionalidad, :estado, :municipio, :direccion)");
-
-		$stmt->bindParam(":cedula", $datos["cedula"], PDO::PARAM_STR);
+			(nombre, apellido, email, password, telefono, pais, ciudad, 
+			 id_patrocinador, id_usuario, verificacion, email_encriptado) 
+			VALUES 
+			(:nombre, :apellido, :email, :password, :telefono, :pais, :ciudad, 
+			 :id_patrocinador, :id_usuario, :verificacion, :email_encriptado)");
+	
+		// Bind de parámetros
+		
+		$stmt->bindParam(":id_usuario", $datos["id_usuario"], PDO::PARAM_STR);
 		$stmt->bindParam(":nombre", $datos["nombre"], PDO::PARAM_STR);
 		$stmt->bindParam(":apellido", $datos["apellido"], PDO::PARAM_STR);
-		$stmt->bindParam(":fecha_nacimiento", $datos["fecha_nacimiento"], PDO::PARAM_STR);
-		$stmt->bindParam(":sexo", $datos["sexo"], PDO::PARAM_STR);
-		$stmt->bindParam(":nacionalidad", $datos["nacionalidad"], PDO::PARAM_STR);
-		$stmt->bindParam(":estado", $datos["estado"], PDO::PARAM_STR);
-		$stmt->bindParam(":municipio", $datos["municipio"], PDO::PARAM_STR);
-		$stmt->bindParam(":direccion", $datos["direccion"], PDO::PARAM_STR);
-
-		if($stmt->execute()){
-
-			return "ok";	
-
-		}else{
-
+		$stmt->bindParam(":email", $datos["email"], PDO::PARAM_STR);
+		$stmt->bindParam(":password", $datos["password"], PDO::PARAM_STR);
+		$stmt->bindParam(":telefono", $datos["telefono"], PDO::PARAM_STR);
+		$stmt->bindParam(":pais", $datos["pais"], PDO::PARAM_STR);
+		$stmt->bindParam(":ciudad", $datos["ciudad"], PDO::PARAM_STR);
+		$stmt->bindParam(":id_patrocinador", $datos["id_patrocinador"], PDO::PARAM_STR);
+		$stmt->bindParam(":verificacion", $datos["verificacion"], PDO::PARAM_INT);
+		$stmt->bindParam(":email_encriptado", $datos["email_encriptado"], PDO::PARAM_STR);
+	
+		try {
+			if($stmt->execute()){
+				return "ok";    
+			} else {
+				error_log("Error en ejecución SQL: " . implode(" ", $stmt->errorInfo()));
+				return "error";
+			}
+		} catch(PDOException $e) {
+			error_log("Error PDO: " . $e->getMessage());
 			return "error";
-		
+		} finally {
+			$stmt = null;
 		}
-
-		$stmt->close();
-		
-		$stmt = null;
-
 	}
 
 	/*=============================================

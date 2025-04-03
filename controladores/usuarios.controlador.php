@@ -7,246 +7,203 @@ class ControladorUsuarios{
 	INGRESO DE USUARIO
 	=============================================*/
 
-	static public function ctrIngresoUsuario(){
-
-		if(isset($_POST["email"])){
-
-			if(preg_match('/^[^0-9][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[@][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,4}$/', $_POST["email"])){
-                
-        		$encriptar = crypt($_POST["password"], '$2a$07$asxx54ahjppf45sd87a5a4dDDGsystemdev$');
-
-				$tabla = "usuarios";
-
-				$item = "email";
-				$valor = $_POST["email"];
-
-				$respuesta = ModeloUsuarios::MdlMostrarUsuarios($tabla, $item, $valor);
-
-				if($respuesta["email"] == $_POST["email"] && $respuesta["password"] == $encriptar){               
-        
-
-						$_SESSION["iniciarSesion"] = "ok";
-						$_SESSION["id"] = $respuesta["id_usuario"];
-						$_SESSION["nombre"] = $respuesta["nombre"];
-						$_SESSION["apellido"] = $respuesta["apellido"];
-						$_SESSION["email"] = $respuesta["email"];
-						$_SESSION["foto"] = $respuesta["foto"];
-						$_SESSION["perfil"] = $respuesta["perfil"];
-
-						
-							echo '<script>
-
-								window.location = "inicio";
-
-							</script>';
-
-						}		else{
-
-					echo '<br><div class="alert alert-danger">Error al ingresar, Datos incorrectos, vuelve a intentarlo</div>';
-
-					}
-
-				}
-
-			}	
-
-	
-	}
-
+    static public function ctrLoginUsuario(){
+        try {
+            // Verificar método POST y token CSRF
+            if ($_SERVER['REQUEST_METHOD'] !== 'POST' || !isset($_POST['csrf_token']) || $_POST['csrf_token'] !== $_SESSION['csrf_token']) {
+                throw new Exception('Solicitud inválida');
+            }
     
-    	/*=============================================
-	REGISTRO DE USUARIO
-	=============================================*/
-
-	static public function ctrCrearUsuario(){
-
-		if(isset($_POST["btnAgregarUsuario"])){
-      
-      		if($_POST["password"] === $_POST["password2"]){   
-      
-
-				if(preg_match('/^[a-zA-ZñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["nombre"]) &&
-			  	 preg_match('/^[^0-9][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[@][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,4}$/', $_POST["email"])){
-
-			   /*=============================================
-				VALIDAR IMAGEN
-				=============================================*/
-
-				$ruta = "";
-
-				if(isset($_FILES["foto"]["tmp_name"])){
-
-					list($ancho, $alto) = getimagesize($_FILES["foto"]["tmp_name"]);
-
-					$nuevoAncho = 500;
-					$nuevoAlto = 500;
-
-					/*=============================================
-					CREAMOS EL DIRECTORIO DONDE VAMOS A GUARDAR LA FOTO DEL USUARIO
-					=============================================*/
-
-					$directorio = "vistas/img/usuarios/".$_POST["email"];
-
-					mkdir($directorio, 0755);
-
-					/*=============================================
-					DE ACUERDO AL TIPO DE IMAGEN APLICAMOS LAS FUNCIONES POR DEFECTO DE PHP
-					=============================================*/
-
-					if($_FILES["foto"]["type"] == "image/jpeg"){
-
-						/*=============================================
-						GUARDAMOS LA IMAGEN EN EL DIRECTORIO
-						=============================================*/
-
-						$aleatorio = mt_rand(100,999);
-
-						$ruta = "vistas/img/usuarios/".$_POST["email"]."/".$aleatorio.".jpg";
-
-						$origen = imagecreatefromjpeg($_FILES["foto"]["tmp_name"]);						
-
-						$destino = imagecreatetruecolor($nuevoAncho, $nuevoAlto);
-
-						imagecopyresized($destino, $origen, 0, 0, 0, 0, $nuevoAncho, $nuevoAlto, $ancho, $alto);
-
-						imagejpeg($destino, $ruta);
-
-					}
-                    
-                    
-                    if($_FILES["foto"]["type"] == "image/png"){
-
-						/*=============================================
-						GUARDAMOS LA IMAGEN EN EL DIRECTORIO
-						=============================================*/
-
-						$aleatorio = mt_rand(100,999);
-
-						$ruta = "vistas/img/usuarios/".$_POST["email"]."/".$aleatorio.".png";
-
-						$origen = imagecreatefrompng($_FILES["foto"]["tmp_name"]);						
-
-						$destino = imagecreatetruecolor($nuevoAncho, $nuevoAlto);
-
-						imagecopyresized($destino, $origen, 0, 0, 0, 0, $nuevoAncho, $nuevoAlto, $ancho, $alto);
-
-						imagepng($destino, $ruta);
-
-					}
-
-				} else {
-          
-						$ruta = "vistas/img/usuarios/default/anonymous.png";
-
+            // Validar campos obligatorios
+            $camposRequeridos = ['email', 'password'];
+            foreach ($camposRequeridos as $campo) {
+                if (empty($_POST[$campo])) {
+                    throw new Exception('Por favor complete todos los campos');
+                }
+            }
+    
+            // Sanitizar y validar email
+            $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
+            if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                throw new Exception('Formato de email inválido');
+            }
+    
+            // Validar política de contraseña
+            $password = $_POST['password'];
+            if (strlen($password) < 6) {
+                throw new Exception('La contraseña debe tener al menos 8 caracteres');
+            }
+    
+            // Buscar usuario en la base de datos
+            $usuario = ModeloUsuarios::MdlMostrarUsuarios('usuarios', 'email', $email);
+    
+            // Verificar existencia de usuario
+            if (!$usuario || !isset($usuario['email'])) {
+                error_log("Intento de login fallido para: $email");
+                throw new Exception('Credenciales incorrectas');
+            }
+    
+            // Verificar contraseña
+            if (!password_verify(md5($password), $usuario['password'])) {
+                // Registrar intento fallido
+                $_SESSION['intentos_fallidos'] = ($_SESSION['intentos_fallidos'] ?? 0) + 1;
+                
+                // Bloquear después de 3 intentos
+                if ($_SESSION['intentos_fallidos'] >= 3) {
+                    sleep(5); // Retraso anti brute-force
+                    throw new Exception('Demasiados intentos fallidos. Espere 5 segundos');
+                }
+                
+                throw new Exception('Credenciales incorrectas');
+            }
+    
+            // Verificar cuenta activa/verificada
+            if ($usuario['verificacion'] != 1) {
+                throw new Exception('Cuenta no verificada. Revise su email');
+            }
+    
+            // Iniciar sesión segura
+            session_regenerate_id(true);
+            
+            $_SESSION["user"] = [
+                "id" => $usuario['id'],
+                "nombre" => $usuario['nombre'],
+                "apellido" => $usuario['apellido'],
+                "email" => $usuario['email'],
+                "perfil" => $usuario['perfil'],
+                "last_login" => time()
+            ];
+    
+            // Limpiar intentos fallidos
+            unset($_SESSION['intentos_fallidos']);
+    
+            // Redirección segura
+            header('Location: inicio');
+            exit();
+    
+        } catch (Exception $e) {
+            // Manejo centralizado de errores
+            error_log("Error de login: " . $e->getMessage());
+            $_SESSION['error_login'] = $e->getMessage();
+            self::mostrarError( $_SESSION['error_login']);
+            exit();
         }
-
-				$tabla = "usuarios";
-                
-                $encriptar = crypt($_POST["password"], '$2a$07$asxx54ahjppf45sd87a5a4dDDGsystemdev$');
-                
-                
-                $nuevoNombre = $_POST["nombre"];
-                $nuevoApellido = $_POST["apellido"];
-                $nuevoNombre = strtoupper($nuevoNombre);
-                $nuevoApellido = strtoupper($nuevoApellido);
-
-				$datos = array("nombre" => $nuevoNombre,
-                       "apellido" => $nuevoApellido,
-					           "email" => $_POST["email"],
-					           "password" => $encriptar,
-					           "perfil" => $_POST["perfil"],
-					           "foto"=>$ruta,
-					           "estado"=>1);
-
-				$respuesta = ModeloUsuarios::mdlIngresarUsuario($tabla, $datos);
-			
-				if($respuesta == "ok"){
-
-							echo '<script>         
-                swal({
-                    title: "Usuario agregado!",
-                    text: "EL Usuarios fue guardado satisfactoriamente!",
-                    type: "success",
-                    icon: "success",
-                }).then(function() {
-                    window.location = "usuarios";
-                });
-                  
-              </script>';
-
-
-
-				}	else {
-            echo '<script>
-
-					swal({
-						type: "error",
-						title: "¡Error al ingresar en la DB!",
-						showConfirmButton: true,
-						confirmButtonText: "Cerrar"
-
-					}).then(function(result){
-
-						if(result.value){
-						
-							window.location = "usuarios";
-
-						}
-
-					});		
-          
-          		window.location = "usuarios";
-
-					</script>';
-          
-        }
-
-
-			}else{
-
-				echo '<script>
-
-					swal({
-
-						type: "error",
-						title: "¡El usuario no puede ir vacío o llevar caracteres especiales!",
-						showConfirmButton: true,
-						confirmButtonText: "Cerrar"
-
-					}).then(function(result){
-
-						if(result.value){
-						
-							window.location = "usuarios";
-
-						}
-
-					});
-				
-
-				</script>';
-
-			}
-
-
-		
-    } else  {
-      echo '<script>         
-                swal({
-                    title: "Password no coinciden!",
-                    text: "Debe confirmar su password!",
-                    type: "error",
-                    icon: "error"
-                }).then(function() {
-                    window.location = "usuarios";
-                });
-                  
-              </script>';
-      }
     }
+    
+/*=============================================
+Registro de usuarios
+=============================================*/
+static public function ctrRegistroUsuario(){
 
+    if(isset($_POST["btnRegistrarUsuario"])){   
 
-	}
+        // Validación de campos obligatorios
+        $camposRequeridos = ["nombre", "apellido", "email", "email2", "password", "password2", "id_usuario"];
+        foreach($camposRequeridos as $campo) {
+            if(empty($_POST[$campo])) {
+                self::mostrarError('Por favor completa todos los campos obligatorios');
+                return;
+            }
+        }
+
+        // Validación de coincidencia de emails
+        if($_POST["email"] != $_POST["email2"]){
+            self::mostrarError('Los correos electrónicos no coinciden');
+            return;
+        }
+
+        // Validación de formato de email
+        if(!filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)){
+            self::mostrarError('Formato de correo electrónico inválido');
+            return;
+        }
+
+        // Validación de contraseñas
+        if($_POST["password"] != $_POST["password2"]){
+            self::mostrarError('Las contraseñas no coinciden');
+            return;
+        }
+
+        if(strlen($_POST["password"]) < 6){
+            self::mostrarError('La contraseña debe tener al menos 6 caracteres');
+            return;
+        }
+
+        // Verificar email único
+        $tabla = "usuarios";
+        $item = "email";
+        $valor = $_POST["email"];
+        
+        $respuesta = ModeloUsuarios::mdlMostrarUsuarios($tabla, $item, $valor);
+        
+        if(isset($respuesta["email"]) && $respuesta["email"] == $_POST["email"]){
+            self::mostrarError('El correo ya está registrado');
+            return;
+        }
+
+        // Encriptar credenciales
+        $encriptarPassword = password_hash($_POST["password"], PASSWORD_DEFAULT);
+        $encriptarEmail = md5($_POST["email"]);
+
+        // Preparar datos para registro
+        $datos = array(
+            "nombre" => $_POST["nombre"],
+            "apellido" => $_POST["apellido"],
+            "email" => $_POST["email"],
+            "password" => $encriptarPassword,
+            "telefono" => $_POST["telefono"] ?? null,
+            "pais" => $_POST["pais"] ?? null,
+            "ciudad" => $_POST["ciudad"] ?? null,
+            "id_patrocinador" => $_POST["id_patrocinador"] ?? null,
+            "id_usuario" => $_POST["id_usuario"] ?? null,
+            "verificacion" => 0,
+            "email_encriptado" => $encriptarEmail
+        );
+
+        // Registrar usuario
+        $respuesta = ModeloUsuarios::mdlRegistroUsuario($tabla, $datos);
+
+        if($respuesta == "ok"){
+            echo '<script>
+                    Swal.fire({
+                        html: `<div class="mt-3">
+                            <div class="avatar-lg mx-auto">
+                                <div class="avatar-title bg-light text-success display-5 rounded-circle">
+                                    <i class="ri-mail-send-fill"></i>
+                                </div>
+                            </div>
+                            <div class="mt-4 pt-2 fs-15">
+                                <h4 class="fs-20 fw-semibold">¡Registro exitoso!</h4>
+                                <p class="text-muted mb-0 mt-3 fs-13">
+                                    Te hemos enviado un correo de verificación a 
+                                    <span class="fw-medium text-dark">'.$_POST["email"].'</span>
+                                </p>
+                            </div>
+                        </div>`,
+                        showConfirmButton: true
+                    }).then(function(result){
+                        if(result.value){
+
+                                window.location = "ingreso";
+
+                        }
+            });
+            </script>';
+        }
+    }
+}
+
+// Función auxiliar para mostrar errores
+private static function mostrarError($mensaje){
+    echo '<script>
+        Swal.fire({
+            icon: "error",
+            title: "Error de validación",
+            text: "'.$mensaje.'",
+            showConfirmButton: true
+        });
+    </script>';
+}
     
     /*=============================================
 	MOSTRAR USUARIO

@@ -1,4 +1,6 @@
-
+<?php
+$_SESSION['csrf_token'] = bin2hex(random_bytes(32));
+?>
     <!-- Layout config Js -->
     <script src="vistas/assets/js/layout.js"></script>
     <!-- Bootstrap Css -->
@@ -22,7 +24,7 @@
                     <div class="col-lg-12">
                         <div class="text-center text-white-50">
                         <div class="text-center">
-                                <a href="index.html" class="d-inline-block auth-logo text-center">
+                                <a href="ingreso" class="d-inline-block auth-logo text-center">
                                     <img src="vistas/images/sistema/logo.png" alt="" height="100">
                                 </a>
                             </div>
@@ -40,11 +42,11 @@
                                     <h3 class="text-primary hv-investment">HV Investment Group!</h3>
                                 </div>
                                 <div class="p-2 mt-4">
-                                    <form action="index.html">
-
+                                    <form action="" method="post" class="needs-validation" novalidate>
+                                    <input type="hidden" name="csrf_token" value="<?= $_SESSION['csrf_token'] ?>">
                                         <div class="mb-3">
-                                            <label for="username" class="form-label">Username</label>
-                                            <input type="text" class="form-control" id="username" placeholder="Enter username">
+                                            <label for="email" class="form-label">E-Mail</label>
+                                            <input type="text" class="form-control" name="email" id="email" placeholder="Enter Email">
                                         </div>
 
                                         <div class="mb-3">
@@ -53,7 +55,7 @@
                                             </div>
                                             <label class="form-label" for="password-input">Password</label>
                                             <div class="position-relative auth-pass-inputgroup mb-3">
-                                                <input type="password" class="form-control pe-5" placeholder="Enter password" id="password-input">
+                                                <input type="password" name="password" class="form-control pe-5" placeholder="Enter password" id="password-input">
                                                 <button class="btn btn-link position-absolute end-0 top-0 text-decoration-none text-muted" type="button" id="password-addon"><i class="ri-eye-fill align-middle"></i></button>
                                             </div>
                                         </div>
@@ -64,7 +66,7 @@
                                         </div>
 
                                         <div class="mt-4">
-                                            <button class="btn btn-success w-100" type="submit">Sign In</button>
+                                            <button class="btn btn-success w-100" type="submit" name="btnLogin">Sign In</button>
                                         </div>
 
                                     </form>
@@ -120,3 +122,11 @@
 </body>
 
 </html>
+
+
+<?php 
+
+$Login = new ControladorUsuarios();
+$Login -> ctrLoginUsuario();
+
+?>

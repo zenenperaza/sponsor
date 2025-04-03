@@ -18,6 +18,10 @@ foreach ($routesArray as $key => $value) {
 }
 
 $ruta = ControladorRuta::ctrRuta();
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -37,7 +41,8 @@ $ruta = ControladorRuta::ctrRuta();
 
     <!--Swiper slider css-->
     <link href="vistas/assets/libs/swiper/swiper-bundle.min.css" rel="stylesheet" type="text/css" />
-
+    <!-- Sweet Alert css-->
+    <link href="vistas/assets/libs/sweetalert2/sweetalert2.min.css" rel="stylesheet" type="text/css" />
     <!-- Layout config Js -->
     
     <!-- Bootstrap Css -->
@@ -145,6 +150,12 @@ if(!empty($routesArray[2])){
     <script src="vistas/assets/js/pages/particles.app.js"></script>
     <!-- password-addon init -->
     <script src="vistas/assets/js/pages/password-addon.init.js"></script>
+        <!-- Sweet Alerts js -->
+    <script src="vistas/assets/libs/sweetalert2/sweetalert2.min.js"></script>
+
+    <!-- Sweet alert init js-->
+    <script src="vistas/assets/js/pages/sweetalerts.init.js"></script>
+
 </body>
 
 </html>
