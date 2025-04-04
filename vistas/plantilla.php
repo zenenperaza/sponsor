@@ -27,12 +27,12 @@ $ruta = ControladorRuta::ctrRuta();
 
     <base href="vistas">
     <meta charset="utf-8" />
-    <title>Dashboard | Velzon - Admin & Dashboard Template</title>
+    <title>Dashboard | HV Investment Group!</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
     <meta content="Themesbrand" name="author" />
     <!-- App favicon -->
-    <link rel="shortcut icon" href="vistas/assets/images/favicon.ico">
+    <link rel="shortcut icon" href="vistas/images/sistema/logo.png">
 
     <!-- jsvectormap css -->
     <link href="vistas/assets/libs/jsvectormap/css/jsvectormap.min.css" rel="stylesheet" type="text/css" />
@@ -112,11 +112,10 @@ if(isset($_SESSION["iniciarSesion"]) && $_SESSION["iniciarSesion"] == "ok"){
 if(!empty($routesArray[2])){
       
       if( $routesArray[2] == "inicio" ||
-         $routesArray[2] == "casos" ||
          $routesArray[2] == "usuarios" ||
          $routesArray[2] == "admin" ||
-         $routesArray[2] == "consejeros" ||
-         $routesArray[2] == "template" ||
+         $routesArray[2] == "genealogia" ||
+         $routesArray[2] == "perfil" ||
          $routesArray[2] == "logout"){  
         
         include "paginas/".$routesArray[2]."/".$routesArray[2].".php";       

@@ -1,35 +1,143 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <title>Árbol Genealógico</title>
-    <link href="styles.css" rel="stylesheet" type="text/css">
-    
-</head>
-<body>
-    <h1>Árbol Genealógico</h1>
-    <input type="text" id="search" placeholder="Buscar por nombre o ID">
-    <svg id="treeSvg">
-        <!-- Definición de marcador de flecha -->
-        <defs>
-            <marker id="arrowhead" markerWidth="10" markerHeight="7" 
-                    refX="10" refY="3.5" orient="auto">
-                <polygon points="0 0, 10 3.5, 0 7" fill="#bdc3c7"/>
-            </marker>
-        </defs>
-    </svg>
 
-    <div id="controls">
-        <button id="expandAll">🔍 Expandir</button>
-        <button id="expandAllSimultaneously">📂 Expandir Todo</button>
-        <button id="collapseAll">➖ Contraer</button>
-        <button id="refreshTree">🔄 Restablecer</button>
-        <button id="fullscreen">⛶ Pantalla Completa</button>
+    
+    <!-- Estilos personalizados para el árbol -->
+    <style>
+        .genealogy-tree-card {
+            border: 1px solid var(--vz-border-color);
+            border-radius: 0.5rem;
+            background: var(--vz-card-bg);
+        }
+
+        #tree-container {
+            min-height: 700px;
+            position: relative;
+            overflow: auto;
+        }
+
+        #treeSvg {
+            width: 100%;
+            height: 700px;
+            background: transparent;
+        }
+
+        .node-body {
+            fill: var(--vz-card-bg);
+            stroke: var(--vz-primary);
+            stroke-width: 1.5px;
+            rx: 8px;
+            ry: 8px;
+        }
+
+        .node-name {
+            fill: var(--vz-primary);
+            font-family: var(--vz-font-sans-serif);
+            font-size: 12px;
+        }
+
+        .node-detail {
+            fill: var(--vz-secondary-color);
+            font-size: 10px;
+        }
+
+        .expand-btn-circle {
+            fill: var(--vz-primary);
+            stroke: var(--vz-card-bg);
+        }
+
+        .link {
+            stroke: var(--vz-border-color);
+        }
+
+        .info-card {
+            background: var(--vz-card-bg);
+            border: 1px solid var(--vz-border-color);
+            box-shadow: var(--vz-box-shadow);
+            border-radius: 0.5rem;
+            z-index: 1000;
+        }
+
+        .tree-controls .btn {
+            padding: 0.375rem 0.75rem;
+            font-size: 0.875rem;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Begin page -->
+    <div id="layout-wrapper">
+        <!-- Header y sidebar de Velzon (mantener estructura original) -->
+        
+        <!-- Contenido principal -->
+        <div class="main-content">
+            <div class="page-content">
+                <div class="container-fluid">
+                    <!-- Encabezado -->
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="page-title-box d-sm-flex align-items-center justify-content-between">
+                                <h4 class="mb-sm-0">Árbol Genealógico</h4>
+                                <div class="page-title-right">
+                                    <ol class="breadcrumb m-0">
+                                        <li class="breadcrumb-item"><a href="javascript: void(0);">Red</a></li>
+                                        <li class="breadcrumb-item active">Árbol Genealógico</li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tarjeta contenedora -->
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card genealogy-tree-card">
+                                <div class="card-header">
+                                    <div class="row g-3 align-items-center">
+                                        <div class="col-md-4">
+                                            <input type="search" 
+                                                   class="form-control" 
+                                                   id="search" 
+                                                   placeholder="Buscar por nombre o ID">
+                                        </div>
+                                        <div class="col-md-8">
+                                            <div class="d-flex gap-2 justify-content-end tree-controls">
+                                                <button class="btn btn-soft-primary" id="expandAll">
+                                                    <i class="ri-zoom-in-line align-bottom"></i> Expandir
+                                                </button>
+                                                <button class="btn btn-soft-info" id="expandAllSimultaneously">
+                                                    <i class="ri-folder-open-line align-bottom"></i> Expandir Todo
+                                                </button>
+                                                <button class="btn btn-soft-warning" id="collapseAll">
+                                                    <i class="ri-zoom-out-line align-bottom"></i> Contraer
+                                                </button>
+                                                <button class="btn btn-soft-danger" id="refreshTree">
+                                                    <i class="ri-restart-line align-bottom"></i> Actualizar
+                                                </button>
+                                                <button class="btn btn-soft-success" id="fullscreen">
+                                                    <i class="ri-fullscreen-line align-bottom"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-body p-0">
+                                    <div id="tree-container">
+                                        <svg id="treeSvg"></svg>
+                                        <div id="infoCard" class="info-card position-fixed p-3" style="display: none;"></div>
+                                        <div id="tooltip" class="tooltip position-fixed"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <div id="infoCard" class="info-card"></div>
-    <div id="tooltip" class="tooltip"></div>
-    
+
+    <!-- Código del árbol genealógico -->
+      
     <script src="https://d3js.org/d3.v7.min.js"></script>
     <script>
          const svg = d3.select("#treeSvg");
@@ -82,25 +190,25 @@
         }
         
         function showInfoCard(d) {
-    const card = d3.select("#infoCard");
-    card.html(`
-        <div style="text-align:center;margin-bottom:15px;">
-            <img src="${d.data.foto || 'https://cdn-icons-png.flaticon.com/512/847/847969.png'}" 
-                 style="width:80px;height:80px;border-radius:50%;border:3px solid #3498db;">
-            <h3 style="margin:5px 0;color:#2c3e50;">${d.data.nombre || "Usuario"}</h3>
-            <small style="color:#7f8c8d;">ID: ${d.data.id || "N/A"}</small>
-        </div>
-        <div style="border-top:1px solid #eee;padding-top:10px;">
-            <p><strong>Correo:</strong> ${d.data.email || "No disponible"}</p>
-            <p><strong>Teléfono:</strong> ${d.data.telefono || "No disponible"}</p>
-            <p><strong>Patrocinador:</strong> ${d.parent?.data?.nombre || "Ninguno"}</p>
-            <p><strong>Patrocinados:</strong> ${countChildren(d)}</p>
-        </div>
-    `);
+            const card = d3.select("#infoCard");
+            card.html(`
+                <div style="text-align:center;margin-bottom:15px;">
+                    <img src="${d.data.foto || 'https://cdn-icons-png.flaticon.com/512/847/847969.png'}" 
+                        style="width:80px;height:80px;border-radius:50%;border:3px solid #3498db;">
+                    <h3 style="margin:5px 0;color:#2c3e50;">${d.data.nombre || "Usuario"}</h3>
+                    <small style="color:#7f8c8d;">ID: ${d.data.id || "N/A"}</small>
+                </div>
+                <div style="border-top:1px solid #eee;padding-top:10px;">
+                    <p><strong>Correo:</strong> ${d.data.email || "No disponible"}</p>
+                    <p><strong>Teléfono:</strong> ${d.data.telefono || "No disponible"}</p>
+                    <p><strong>Patrocinador:</strong> ${d.parent?.data?.nombre || "Ninguno"}</p>
+                    <p><strong>Patrocinados:</strong> ${countChildren(d)}</p>
+                </div>
+            `);
 
-    // Mostrar la tarjeta en la parte inferior derecha
-    card.style("display", "block");
-}
+            // Mostrar la tarjeta en la parte inferior derecha
+            card.style("display", "block");
+        }
 
         
         // Función principal de actualización
@@ -266,7 +374,7 @@
         }
         
         // Carga de datos inicial
-        d3.json("datos.php").then(data => {
+        d3.json("vistas/d3/datos.php").then(data => {
             root = d3.hierarchy(data);
             
             root.descendants().forEach(d => {
@@ -410,95 +518,95 @@
             });
         }
 
-        // Expandir todos los nodos
-document.getElementById("expandAll").addEventListener("click", () => {
-    root.descendants().forEach(d => {
-        if (d._children) {
-            d.children = d._children;
-            d._children = null;
-        }
-    });
-    update(root);
-});
-
-// Contraer todos los nodos
-    document.getElementById("collapseAll").addEventListener("click", () => {
-        root.descendants().forEach(d => {
-            if (d.children && d.depth > 0) {
-                d._children = d.children;
-                d.children = null;
-            }
-        });
-        update(root);
-    });
-
-// Pantalla completa
-    document.getElementById("fullscreen").addEventListener("click", () => {
-        const elem = document.documentElement;
-        if (!document.fullscreenElement) {
-            elem.requestFullscreen().catch(err => console.error(err));
-        } else {
-            document.exitFullscreen();
-        }
-    });
-
-// Expandir todos los nodos simultáneamente
-    document.getElementById("expandAllSimultaneously").addEventListener("click", () => {
-        function expandRecursively(d) {
-            if (d._children) {
-                d.children = d._children;
-                d._children = null;
-            }
-            if (d.children) {
-                d.children.forEach(expandRecursively);
-            }
-        }
-        expandRecursively(root); // Iniciar expansión desde la raíz
-        update(root);
-    });
-// Agregar este código junto con los otros event listeners de botones
-    document.getElementById("refreshTree").addEventListener("click", () => {
-        // Mostrar un indicador de carga
-        const refreshBtn = document.getElementById("refreshTree");
-        refreshBtn.innerHTML = "⏳ Cargando...";
-        refreshBtn.disabled = true;
-        
-        // Limpiar el SVG temporalmente
-        g.selectAll("*").remove();
-        
-        // Volver a cargar los datos
-        d3.json("datos.php").then(data => {
-            root = d3.hierarchy(data);
-            
+            // Expandir todos los nodos
+        document.getElementById("expandAll").addEventListener("click", () => {
             root.descendants().forEach(d => {
-                nodeMap.set(d.data.id, d);
-                if (d.children) {
-                    d._children = d.children;
-                    d.children = null;
+                if (d._children) {
+                    d.children = d._children;
+                    d._children = null;
                 }
             });
-            
-            // Expandir solo el nodo raíz
-            if (root._children) {
-                root.children = root._children;
-                root._children = null;
-            }
-            
-            // Calcular layout y actualizar
-            treeLayout(root);
             update(root);
-            
-            // Restaurar el botón
-            refreshBtn.innerHTML = "🔄 Actualizar Árbol";
-            refreshBtn.disabled = false;
-            
-        }).catch(error => {
-            console.error("Error al actualizar:", error);
-            alert("Error al actualizar el árbol");
-            refreshBtn.innerHTML = "🔄 Actualizar Árbol";
-            refreshBtn.disabled = false;
         });
-    });
+
+        // Contraer todos los nodos
+            document.getElementById("collapseAll").addEventListener("click", () => {
+                root.descendants().forEach(d => {
+                    if (d.children && d.depth > 0) {
+                        d._children = d.children;
+                        d.children = null;
+                    }
+                });
+                update(root);
+            });
+
+        // Pantalla completa
+            document.getElementById("fullscreen").addEventListener("click", () => {
+                const elem = document.documentElement;
+                if (!document.fullscreenElement) {
+                    elem.requestFullscreen().catch(err => console.error(err));
+                } else {
+                    document.exitFullscreen();
+                }
+            });
+
+        // Expandir todos los nodos simultáneamente
+            document.getElementById("expandAllSimultaneously").addEventListener("click", () => {
+                function expandRecursively(d) {
+                    if (d._children) {
+                        d.children = d._children;
+                        d._children = null;
+                    }
+                    if (d.children) {
+                        d.children.forEach(expandRecursively);
+                    }
+                }
+                expandRecursively(root); // Iniciar expansión desde la raíz
+                update(root);
+            });
+        // Agregar este código junto con los otros event listeners de botones
+            document.getElementById("refreshTree").addEventListener("click", () => {
+                // Mostrar un indicador de carga
+                const refreshBtn = document.getElementById("refreshTree");
+                refreshBtn.innerHTML = "⏳ Cargando...";
+                refreshBtn.disabled = true;
+                
+                // Limpiar el SVG temporalmente
+                g.selectAll("*").remove();
+                
+                // Volver a cargar los datos
+                d3.json("vistas/d3/datos.php").then(data => {
+                    root = d3.hierarchy(data);
+                    
+                    root.descendants().forEach(d => {
+                        nodeMap.set(d.data.id, d);
+                        if (d.children) {
+                            d._children = d.children;
+                            d.children = null;
+                        }
+                    });
+                    
+                    // Expandir solo el nodo raíz
+                    if (root._children) {
+                        root.children = root._children;
+                        root._children = null;
+                    }
+                    
+                    // Calcular layout y actualizar
+                    treeLayout(root);
+                    update(root);
+                    
+                    // Restaurar el botón
+                    refreshBtn.innerHTML = "🔄 Actualizar Árbol";
+                    refreshBtn.disabled = false;
+                    
+                }).catch(error => {
+                    console.error("Error al actualizar:", error);
+                    alert("Error al actualizar el árbol");
+                    refreshBtn.innerHTML = "🔄 Actualizar Árbol";
+                    refreshBtn.disabled = false;
+                });
+            });
     </script>
 </body>
 </html>

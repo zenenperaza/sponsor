@@ -33,7 +33,8 @@ class ControladorUsuarios{
         
     
                         $_SESSION["iniciarSesion"] = "ok";
-                        $_SESSION["id"] = $respuesta["id_usuario"];
+                        $_SESSION["id"] = $respuesta["id"];
+                        $_SESSION["id_usuario"] = $respuesta["id_usuario"];
                         $_SESSION["nombre"] = $respuesta["nombre"];
                         $_SESSION["apellido"] = $respuesta["apellido"];
                         $_SESSION["email"] = $respuesta["email"];
@@ -120,6 +121,7 @@ static public function ctrRegistroUsuario(){
             "nombre" => $_POST["nombre"],
             "apellido" => $_POST["apellido"],
             "email" => $_POST["email"],
+            "perfil" => 'usuario',
             "password" => $encriptarPassword,
             "telefono" => $_POST["telefono"] ?? null,
             "pais" => $_POST["pais"] ?? null,

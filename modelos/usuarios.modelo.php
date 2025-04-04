@@ -44,10 +44,10 @@ class ModeloUsuarios{
 	static public function mdlRegistroUsuario($tabla, $datos){
 
 		$stmt = Conexion::conectar()->prepare("INSERT INTO $tabla 
-			(nombre, apellido, email, password, telefono, pais, ciudad, 
+			(nombre, apellido, email, perfil, password, telefono, pais, ciudad, 
 			 id_patrocinador, id_usuario, verificacion, email_encriptado) 
 			VALUES 
-			(:nombre, :apellido, :email, :password, :telefono, :pais, :ciudad, 
+			(:nombre, :apellido, :email, :perfil, :password, :telefono, :pais, :ciudad, 
 			 :id_patrocinador, :id_usuario, :verificacion, :email_encriptado)");
 	
 		// Bind de parámetros
@@ -56,6 +56,7 @@ class ModeloUsuarios{
 		$stmt->bindParam(":nombre", $datos["nombre"], PDO::PARAM_STR);
 		$stmt->bindParam(":apellido", $datos["apellido"], PDO::PARAM_STR);
 		$stmt->bindParam(":email", $datos["email"], PDO::PARAM_STR);
+		$stmt->bindParam(":perfil", $datos["perfil"], PDO::PARAM_STR);
 		$stmt->bindParam(":password", $datos["password"], PDO::PARAM_STR);
 		$stmt->bindParam(":telefono", $datos["telefono"], PDO::PARAM_STR);
 		$stmt->bindParam(":pais", $datos["pais"], PDO::PARAM_STR);
@@ -105,7 +106,7 @@ class ModeloUsuarios{
 
 		$stmt -> bindParam(":cedula", $datos["cedula"], PDO::PARAM_STR);
 		$stmt -> bindParam(":nombre", $datos["nombre"], PDO::PARAM_STR);
-    $stmt -> bindParam(":apellido", $datos["apellido"], PDO::PARAM_STR);
+    	$stmt -> bindParam(":apellido", $datos["apellido"], PDO::PARAM_STR);
 		$stmt -> bindParam(":fecha_nacimiento", $datos["fecha_nacimiento"], PDO::PARAM_STR);
 		$stmt -> bindParam(":sexo", $datos["sexo"], PDO::PARAM_STR);
 		$stmt -> bindParam(":nacionalidad", $datos["nacionalidad"], PDO::PARAM_STR);
