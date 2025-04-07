@@ -1,17 +1,36 @@
-
+<!DOCTYPE html>
+<html lang="es" data-layout="vertical" data-topbar="light" data-sidebar="dark" data-sidebar-size="lg">
+<head>
+    <meta charset="utf-8" />
+    <title>Árbol Genealógico | Velzon</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
+    <meta content="Themesbrand" name="author" />
+    
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="assets/images/favicon.ico">
+    
+    <!-- CSS de Velzon -->
+    <link href="assets/libs/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="assets/libs/simplebar/simplebar.min.css" rel="stylesheet" type="text/css">
+    <link href="assets/libs/node-waves/waves.min.css" rel="stylesheet" type="text/css">
+    <link href="assets/css/icons.min.css" rel="stylesheet" type="text/css">
+    <link href="assets/css/app.min.css" rel="stylesheet" type="text/css">
     
     <!-- Estilos personalizados para el árbol -->
     <style>
-        .genealogy-tree-card {
-            border: 1px solid var(--vz-border-color);
+        .genealogy-tree {
             border-radius: 0.5rem;
-            background: var(--vz-card-bg);
+            background-color: var(--vz-card-bg);
+            border: 1px solid var(--vz-border-color);
+            box-shadow: var(--vz-box-shadow);
         }
 
         #tree-container {
             min-height: 700px;
             position: relative;
             overflow: auto;
+            background-color: var(--vz-card-bg);
         }
 
         #treeSvg {
@@ -26,39 +45,97 @@
             stroke-width: 1.5px;
             rx: 8px;
             ry: 8px;
+            transition: all 0.2s ease;
+            filter: drop-shadow(0 2px 4px rgba(var(--vz-primary-rgb), 0.1));
         }
 
         .node-name {
-            fill: var(--vz-primary);
+            fill: var(--vz-gray-800);
             font-family: var(--vz-font-sans-serif);
             font-size: 12px;
+            font-weight: 600;
         }
 
         .node-detail {
-            fill: var(--vz-secondary-color);
+            fill: var(--vz-gray-600);
             font-size: 10px;
+            font-family: var(--vz-font-sans-serif);
         }
 
         .expand-btn-circle {
             fill: var(--vz-primary);
             stroke: var(--vz-card-bg);
+            cursor: pointer;
+            stroke-width: 2px;
         }
 
         .link {
-            stroke: var(--vz-border-color);
+            stroke: var(--vz-gray-300);
+            stroke-width: 1.5px;
+            fill: none;
         }
 
         .info-card {
-            background: var(--vz-card-bg);
+            background-color: var(--vz-card-bg);
             border: 1px solid var(--vz-border-color);
-            box-shadow: var(--vz-box-shadow);
+            box-shadow: var(--vz-box-shadow-lg);
             border-radius: 0.5rem;
             z-index: 1000;
+            max-width: 300px;
+            padding: 1rem;
         }
 
         .tree-controls .btn {
             padding: 0.375rem 0.75rem;
-            font-size: 0.875rem;
+            font-size: 0.8125rem;
+            margin: 0 3px 3px 0;
+        }
+        
+        /* Efecto hover para nodos */
+        .node:hover .node-body {
+            stroke: var(--vz-danger);
+            filter: drop-shadow(0 0 5px rgba(var(--vz-primary-rgb), 0.2));
+        }
+        
+        /* Ajustes para modo oscuro */
+        [data-bs-theme="dark"] .node-name {
+            fill: var(--vz-gray-300);
+        }
+        
+        [data-bs-theme="dark"] .node-detail {
+            fill: var(--vz-gray-500);
+        }
+        
+        [data-bs-theme="dark"] .link {
+            stroke: var(--vz-gray-700);
+        }
+        
+        .search-container {
+            padding: 1rem;
+            border-bottom: 1px solid var(--vz-border-color);
+            background-color: var(--vz-card-bg);
+        }
+        
+        .search-box {
+            position: relative;
+            max-width: 400px;
+        }
+        
+        .search-icon {
+            position: absolute;
+            right: 10px;
+            top: 10px;
+            color: var(--vz-secondary-color);
+        }
+        
+        .avatar-circle {
+            border: 2px solid var(--vz-primary);
+        }
+        
+        .controls-container {
+            padding: 0.5rem 1rem;
+            background-color: var(--vz-card-bg);
+            border-bottom: 1px solid var(--vz-border-color);
         }
     </style>
 </head>
@@ -66,17 +143,72 @@
 <body>
     <!-- Begin page -->
     <div id="layout-wrapper">
-        <!-- Header y sidebar de Velzon (mantener estructura original) -->
+        <!-- ========== Header ========== -->
+        <header id="page-topbar">
+            <div class="layout-width">
+                <div class="navbar-header">
+                    <div class="d-flex">
+                        <!-- Logo -->
+                        <div class="navbar-brand-box horizontal-logo">
+                            <a href="index.html" class="logo logo-dark">
+                                <span class="logo-sm">
+                                    <img src="assets/images/logo-sm.png" alt="" height="22">
+                                </span>
+                                <span class="logo-lg">
+                                    <img src="assets/images/logo-dark.png" alt="" height="17">
+                                </span>
+                            </a>
+                            <a href="index.html" class="logo logo-light">
+                                <span class="logo-sm">
+                                    <img src="assets/images/logo-sm.png" alt="" height="22">
+                                </span>
+                                <span class="logo-lg">
+                                    <img src="assets/images/logo-light.png" alt="" height="17">
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
         
-        <!-- Contenido principal -->
+        <!-- ========== Sidebar ========== -->
+        <div class="vertical-menu">
+            <div data-simplebar class="h-100">
+                <!--- Menu -->
+                <div id="sidebar-menu">
+                    <ul class="metismenu list-unstyled" id="side-menu">
+                        <li class="menu-title" data-key="t-menu">Menu</li>
+                        <li>
+                            <a href="index.html">
+                                <i class="ri-dashboard-2-line"></i>
+                                <span data-key="t-dashboard">Dashboard</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript: void(0);" class="has-arrow">
+                                <i class="ri-account-circle-line"></i>
+                                <span data-key="t-network">Red</span>
+                            </a>
+                            <ul class="sub-menu">
+                                <li><a href="network-list.html" data-key="t-network-list">Lista de Miembros</a></li>
+                                <li><a href="genealogy.html" data-key="t-genealogy" class="active">Árbol Genealógico</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========== Contenido Principal ========== -->
         <div class="main-content">
             <div class="page-content">
                 <div class="container-fluid">
-                    <!-- Encabezado -->
+                    <!-- Encabezado de página -->
                     <div class="row">
                         <div class="col-12">
                             <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                                <h4 class="mb-sm-0">Árbol Genealógico</h4>
+                                <h4 class="mb-sm-0 font-size-18">Árbol Genealógico</h4>
                                 <div class="page-title-right">
                                     <ol class="breadcrumb m-0">
                                         <li class="breadcrumb-item"><a href="javascript: void(0);">Red</a></li>
@@ -87,44 +219,48 @@
                         </div>
                     </div>
 
-                    <!-- Tarjeta contenedora -->
+                    <!-- Contenedor principal -->
                     <div class="row">
                         <div class="col-12">
-                            <div class="card genealogy-tree-card">
-                                <div class="card-header">
-                                    <div class="row g-3 align-items-center">
-                                        <div class="col-md-4">
-                                            <input type="search" 
-                                                   class="form-control" 
-                                                   id="search" 
-                                                   placeholder="Buscar por nombre o ID">
-                                        </div>
-                                        <div class="col-md-8">
-                                            <div class="d-flex gap-2 justify-content-end tree-controls">
-                                                <button class="btn btn-soft-primary" id="expandAll">
-                                                    <i class="ri-zoom-in-line align-bottom"></i> Expandir
-                                                </button>
-                                                <button class="btn btn-soft-info" id="expandAllSimultaneously">
-                                                    <i class="ri-folder-open-line align-bottom"></i> Expandir Todo
-                                                </button>
-                                                <button class="btn btn-soft-warning" id="collapseAll">
-                                                    <i class="ri-zoom-out-line align-bottom"></i> Contraer
-                                                </button>
-                                                <button class="btn btn-soft-danger" id="refreshTree">
-                                                    <i class="ri-restart-line align-bottom"></i> Actualizar
-                                                </button>
-                                                <button class="btn btn-soft-success" id="fullscreen">
-                                                    <i class="ri-fullscreen-line align-bottom"></i>
-                                                </button>
-                                            </div>
-                                        </div>
+                            <div class="card genealogy-tree">
+                                <!-- Barra superior con búsqueda -->
+                                <div class="search-container">
+                                    <div class="search-box">
+                                        <input type="text" class="form-control" id="search" placeholder="Buscar por nombre o ID...">
+                                        <i class="ri-search-line search-icon"></i>
                                     </div>
                                 </div>
+                                
+                                <!-- Controles -->
+                                <div class="controls-container d-flex flex-wrap">
+                                    <button class="btn btn-soft-primary btn-sm" id="expandAll">
+                                        <i class="ri-zoom-in-line align-bottom me-1"></i> Expandir
+                                    </button>
+                                    <button class="btn btn-soft-info btn-sm" id="expandAllSimultaneously">
+                                        <i class="ri-folder-open-line align-bottom me-1"></i> Expandir Todo
+                                    </button>
+                                    <button class="btn btn-soft-warning btn-sm" id="collapseAll">
+                                        <i class="ri-zoom-out-line align-bottom me-1"></i> Contraer
+                                    </button>
+                                    <button class="btn btn-soft-danger btn-sm" id="refreshTree">
+                                        <i class="ri-restart-line align-bottom me-1"></i> Actualizar
+                                    </button>
+                                    <button class="btn btn-soft-success btn-sm" id="fullscreen">
+                                        <i class="ri-fullscreen-line align-bottom"></i> Pantalla Completa
+                                    </button>
+                                </div>
+                                
+                                <!-- Área del árbol -->
                                 <div class="card-body p-0">
                                     <div id="tree-container">
-                                        <svg id="treeSvg"></svg>
-                                        <div id="infoCard" class="info-card position-fixed p-3" style="display: none;"></div>
-                                        <div id="tooltip" class="tooltip position-fixed"></div>
+                                        <svg id="treeSvg">
+                                            <defs>
+                                                <marker id="arrowhead" markerWidth="10" markerHeight="7" 
+                                                        refX="10" refY="3.5" orient="auto">
+                                                    <polygon points="0 0, 10 3.5, 0 7" fill="var(--vz-gray-400)"/>
+                                                </marker>
+                                            </defs>
+                                        </svg>
                                     </div>
                                 </div>
                             </div>
@@ -135,13 +271,29 @@
         </div>
     </div>
 
+    <!-- Info Card -->
+    <div id="infoCard" class="info-card position-fixed" style="display: none;"></div>
+    
+    <!-- Tooltip -->
+    <div id="tooltip" class="tooltip position-fixed"></div>
+
+    <!-- Scripts de Velzon -->
+    <script src="assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/libs/simplebar/simplebar.min.js"></script>
+    <script src="assets/libs/node-waves/waves.min.js"></script>
+    <script src="assets/libs/feather-icons/feather.min.js"></script>
+    <script src="assets/js/pages/plugins/lord-icon-2.1.0.js"></script>
+    <script src="assets/js/app.js"></script>
+    
+    <!-- D3.js para visualización -->
+    <script src="https://d3js.org/d3.v7.min.js"></script>
 
     <!-- Código del árbol genealógico -->
-      
-    <script src="https://d3js.org/d3.v7.min.js"></script>
     <script>
-         const svg = d3.select("#treeSvg");
-        const width = svg.node().clientWidth;
+    document.addEventListener('DOMContentLoaded', function() {
+        const svg = d3.select("#treeSvg");
+        const container = document.getElementById('tree-container');
+        const width = container.clientWidth;
         const height = 700;
         svg.attr("width", width).attr("height", height);
         
@@ -152,98 +304,77 @@
         const horizontalSpacing = 200;
         const verticalSpacing = 120;
         
-        // Configuración del layout con ajuste para centrado
+        // Configuración del layout
         const treeLayout = d3.tree()
             .nodeSize([horizontalSpacing, verticalSpacing])
             .separation((a, b) => a.parent === b.parent ? 1 : 1.5);
-        
-      
         
         let root;
         let nodeMap = new Map();
         
         // Zoom y panning
         const zoom = d3.zoom()
-            .scaleExtent([0.5, 2]) // Limita el zoom para evitar que se haga demasiado grande o pequeño
+            .scaleExtent([0.5, 2])
             .on("zoom", (event) => {
                 g.attr("transform", event.transform);
             });
 
-        svg.call(zoom);
+        svg.call(zoom)
+           .call(zoom.transform, d3.zoomIdentity.translate(width / 2, 50));
 
-        // Mantener la posición inicial sin alterar zoom al actualizar
-        const initialTransform = d3.zoomIdentity.translate(width / 2, 50).scale(1);
-        svg.call(zoom.transform, initialTransform);
-
-        
         // Funciones auxiliares
         function countChildren(d) {
-            // Cuenta tanto hijos visibles (children) como ocultos (_children)
-            const activeChildren = d.children ? d.children.length : 0;
-            const hiddenChildren = d._children ? d._children.length : 0;
-            return activeChildren + hiddenChildren;
+            return (d.children?.length || 0) + (d._children?.length || 0);
         }
         
         function getSponsorName(d) {
-            if (!d.parent || !d.parent.data) return "Ninguno";
-            return d.parent.data.nombre; // Nombre completo sin abreviar
+            return d.parent?.data?.nombre || "Ninguno";
         }
         
         function showInfoCard(d) {
             const card = d3.select("#infoCard");
             card.html(`
-                <div style="text-align:center;margin-bottom:15px;">
-                    <img src="${d.data.foto || 'https://cdn-icons-png.flaticon.com/512/847/847969.png'}" 
-                        style="width:80px;height:80px;border-radius:50%;border:3px solid #3498db;">
-                    <h3 style="margin:5px 0;color:#2c3e50;">${d.data.nombre || "Usuario"}</h3>
-                    <small style="color:#7f8c8d;">ID: ${d.data.id || "N/A"}</small>
+                <div class="text-center mb-3">
+                    <img src="${d.data.foto || 'assets/images/users/avatar-1.jpg'}" 
+                         class="rounded-circle avatar-md border border-primary avatar-circle">
+                    <h4 class="mt-2 mb-0">${d.data.nombre || "Usuario"}</h4>
+                    <small class="text-muted">ID: ${d.data.id_usuario || "N/A"}</small>
                 </div>
-                <div style="border-top:1px solid #eee;padding-top:10px;">
-                    <p><strong>Correo:</strong> ${d.data.email || "No disponible"}</p>
-                    <p><strong>Teléfono:</strong> ${d.data.telefono || "No disponible"}</p>
-                    <p><strong>Patrocinador:</strong> ${d.parent?.data?.nombre || "Ninguno"}</p>
-                    <p><strong>Patrocinados:</strong> ${countChildren(d)}</p>
+                <div class="border-top pt-2">
+                    <p class="mb-1"><i class="ri-mail-line me-2"></i> ${d.data.email || "No disponible"}</p>
+                    <p class="mb-1"><i class="ri-phone-line me-2"></i> ${d.data.telefono || "No disponible"}</p>
+                    <p class="mb-1"><i class="ri-user-star-line me-2"></i> Patrocinador: ${getSponsorName(d)}</p>
+                    <p class="mb-0"><i class="ri-team-line me-2"></i> Patrocinados: ${countChildren(d)}</p>
                 </div>
-            `);
-
-            // Mostrar la tarjeta en la parte inferior derecha
-            card.style("display", "block");
+                <div class="mt-3 d-flex justify-content-between">
+                    <button class="btn btn-sm btn-primary">Ver perfil</button>
+                    <button class="btn btn-sm btn-soft-info">Enviar mensaje</button>
+                </div>
+            `).style("display", "block")
+              .style("left", (d3.event.pageX + 10) + "px")
+              .style("top", (d3.event.pageY + 10) + "px");
         }
 
-        
         // Función principal de actualización
         function update(source) {
-            
             treeLayout(root);
-
-            const rootX = width / 2;
-            const rootY = 60; // Margen superior
-
-            const transform = d3.zoomTransform(svg.node());
-            g.attr("transform", `translate(${transform.x}, ${transform.y}) scale(${transform.k})`);
 
             const nodes = root.descendants();
             const links = root.links();
             
-            // Ajuste de los puntos de conexión
+            // Generador de enlaces
             const linkGenerator = d3.linkVertical()
                 .x(d => d.x)
-                .y(d => {
-                    // Si es el nodo padre, conecta en el borde inferior
-                    if (d.source) {
-                        return d.y - nodeHeight/2 + 15; // Ajuste para conectar debajo del nodo padre
-                    }
-                    // Si es el nodo hijo, conecta en el borde superior
-                    return d.y + nodeHeight/2 - 15;
-                });
+                .y(d => d.y + (d.source ? -nodeHeight/2 + 15 : nodeHeight/2 - 15));
             
             // Actualización de los enlaces
             const linkPaths = g.selectAll(".link")
-                .data(links, d => d.target.data.id);
+                .data(links, d => d.target.data.id_usuario);
                 
             linkPaths.enter()
                 .append("path")
                 .attr("class", "link")
+                .attr("marker-end", "url(#arrowhead)")
                 .merge(linkPaths)
                 .transition()
                 .duration(500)
@@ -253,11 +384,11 @@
             
             // Dibujamos los nodos
             const nodeGroups = g.selectAll(".node")
-                .data(nodes, d => d.data.id);
+                .data(nodes, d => d.data.id_usuario);
                 
             const newNodeGroups = nodeGroups.enter()
                 .append("g")
-                .attr("class", "node node-card")
+                .attr("class", "node")
                 .attr("transform", d => `translate(${d.x},${d.y})`);
                 
             // Cuerpo de la tarjeta
@@ -268,54 +399,49 @@
                 .attr("x", -nodeWidth/2)
                 .attr("y", -nodeHeight/2);
 
-
+            // Foto del usuario
             newNodeGroups.append("image")
-                .attr("class", "node-photo")
-                .attr("xlink:href", d => d.data.foto || "https://cdn-icons-png.flaticon.com/512/847/847969.png")
+                .attr("xlink:href", d => d.data.foto || "assets/images/users/avatar-1.jpg")
                 .attr("x", -nodeWidth/2 + 10)
                 .attr("y", -nodeHeight/2 + 10)
                 .attr("width", 44)
-                .attr("height", 44);
+                .attr("height", 44)
+                .attr("clip-path", "circle(22px at center)");
                 
-            // Contenedor de información (mejor organizado)
+            // Contenedor de información
             const infoContainer = newNodeGroups.append("g")
-                .attr("class", "node-info-container")
                 .attr("transform", `translate(${-nodeWidth/2 + 65},${-nodeHeight/2 + 15})`);
                 
-
-
-                
-            // nombre
+            // Nombre
             infoContainer.append("text")
                 .attr("class", "node-name")
                 .attr("y", 15)
-                .text(d => `${d.data.nombre || ""}`)                
-                .call(wrap, 100); // Ajusta el ancho máximo;
+                .text(d => d.data.nombre || "")
+                .call(wrap, 100);
 
             // ID
             infoContainer.append("text")
                 .attr("class", "node-detail")
                 .attr("y", 30)
-                .text(d => `ID: ${d.data.id || ""}`);
+                .text(d => `ID: ${d.data.id_usuario || ""}`);
 
-
+            // Patrocinador
             infoContainer.append("text")
-                .attr("class", "sponsor-info")
+                .attr("class", "node-detail")
                 .attr("y", 45)
-                .text(d => `Patro: ${getSponsorName(d)}`)
-                .call(wrap, 100); // Ajusta el ancho máximo
+                .text(d => `Patro: ${getSponsorName(d)}`);
       
-                
             // Patrocinados
             infoContainer.append("text")
-                .attr("class", "sponsor-info")
+                .attr("class", "node-detail")
                 .attr("y", 60)
                 .text(d => `Patricds: ${countChildren(d)}`);
                 
-                const expandButtons = newNodeGroups.filter(d => d._children || d.children)
+            // Botones de expansión
+            const expandButtons = newNodeGroups.filter(d => d._children || d.children)
                 .append("g")
                 .attr("class", "expand-btn")
-                .attr("transform", `translate(0,${nodeHeight/2})`) // Centro en el borde inferior
+                .attr("transform", `translate(0,${nodeHeight/2})`)
                 .on("click", function(event, d) {
                     event.stopPropagation();
                     if (d.children) {
@@ -328,25 +454,26 @@
                     update(d);
                 });
                 
-                expandButtons.append("circle")
+            expandButtons.append("circle")
                 .attr("class", "expand-btn-circle")
-                .attr("r", 15)
-                .attr("cy", 0); // Centro exacto en el borde
+                .attr("r", 15);
                 
-                // Texto del botón (+/-)
-                expandButtons.append("text")
-                    .attr("class", "expand-text")
-                    .attr("y", 0)
-                    .text(d => d.children ? "-" : "+");
+            // Texto del botón (+/-)
+            expandButtons.append("text")
+                .attr("class", "expand-text")
+                .attr("text-anchor", "middle")
+                .attr("dy", "0.3em")
+                .attr("fill", "white")
+                .style("font-weight", "bold")
+                .text(d => d.children ? "-" : "+");
                 
-                // Eventos interactivos
-                newNodeGroups.on("click", function(event, d) {
-                    event.stopPropagation(); // Evita que el clic afecte el zoom
-                    showInfoCard(d, event);
+            // Eventos interactivos
+            newNodeGroups.on("click", function(event, d) {
+                    event.stopPropagation();
+                    showInfoCard(d);
                 })
-
                 .on("mouseover", function(event, d) {
-                    d3.select(this).select("rect").attr("stroke", "#e74c3c");
+                    d3.select(this).select("rect").attr("stroke", "var(--vz-danger)");
                     d3.select("#tooltip")
                         .style("display", "block")
                         .style("left", (event.pageX + 10) + "px")
@@ -354,7 +481,7 @@
                         .html(`<b>${d.data.nombre}</b><br>Nivel: ${d.depth}`);
                 })
                 .on("mouseout", function() {
-                    d3.select(this).select("rect").attr("stroke", "#3498db");
+                    d3.select(this).select("rect").attr("stroke", "var(--vz-primary)");
                     d3.select("#tooltip").style("display", "none");
                 });
                 
@@ -364,164 +491,113 @@
                 .duration(500)
                 .attr("transform", d => `translate(${d.x},${d.y})`);
                 
-            // Actualizar botones de expandir
-            g.selectAll(".expand-btn text")
-                .text(d => d.children ? "-" : "+");
-                
             nodeGroups.exit().remove();
-
-            svg.call(zoom.transform, transform);
         }
         
+        // Función para ajustar texto
+        function wrap(text, maxWidth) {
+            text.each(function() {
+                const textElement = d3.select(this);
+                const words = textElement.text().split(/\s+/);
+                let line = [];
+                let lineNumber = 0;
+                const lineHeight = 1.1;
+                const y = textElement.attr("y");
+                const dy = parseFloat(textElement.attr("dy") || 0);
+                
+                textElement.text(null);
+                
+                let tspan = textElement.append("tspan")
+                    .attr("x", 0)
+                    .attr("y", y)
+                    .attr("dy", dy + "em")
+                    .text(words.join(" "));
+                
+                // Si el texto es demasiado largo, agregar puntos suspensivos
+                if (tspan.node().getComputedTextLength() > maxWidth) {
+                    textElement.text(null);
+                    let str = words.join(" ");
+                    let truncated = str;
+                    
+                    do {
+                        truncated = str.substring(0, str.length - 4) + "...";
+                        tspan = textElement.append("tspan")
+                            .attr("x", 0)
+                            .attr("y", y)
+                            .attr("dy", dy + "em")
+                            .text(truncated);
+                        str = truncated;
+                    } while (tspan.node().getComputedTextLength() > maxWidth && str.length > 4);
+                }
+            });
+        }
+
         // Carga de datos inicial
         d3.json("vistas/d3/datos.php").then(data => {
             root = d3.hierarchy(data);
             
             root.descendants().forEach(d => {
-                nodeMap.set(d.data.id, d);
+                nodeMap.set(d.data.id_usuario, d);
                 if (d.children) {
                     d._children = d.children;
                     d.children = null;
                 }
             });
             
-             // Expandir solo el nodo raíz
-             if (root._children) {
+            // Expandir solo el nodo raíz
+            if (root._children) {
                 root.children = root._children;
                 root._children = null;
             }
             
-             // Calcular layout inicial
-             treeLayout(root);
-            
-            // Centrar el árbol
+            // Calcular layout inicial
+            treeLayout(root);
             update(root);
-            
             
         }).catch(error => {
             console.error("Error al cargar datos:", error);
-            alert("Error al cargar el árbol genealógico");
+            // Mostrar error usando SweetAlert2 de Velzon
+            Swal.fire({
+                title: 'Error',
+                text: 'No se pudo cargar el árbol genealógico',
+                icon: 'error',
+                confirmButtonText: 'Reintentar',
+                allowOutsideClick: false
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.reload();
+                }
+            });
         });
 
-        
         // Eventos globales
         document.addEventListener('click', function(event) {
-            if (!event.target.closest('.node') && !event.target.closest('.info-card')) {
+            if (!event.target.closest('.node') && !event.target.closest('#infoCard')) {
                 d3.select('#infoCard').style('display', 'none');
             }
         });
         
+        // Búsqueda
         d3.select("#search").on("input", function() {
             const term = this.value.toLowerCase();
             g.selectAll(".node")
                 .style("opacity", d => 
                     !term || 
                     (d.data.nombre && d.data.nombre.toLowerCase().includes(term)) || 
-                    (d.data.id && d.data.id.toString().includes(term)) ? 1 : 0.3);
+                    (d.data.id_usuario && d.data.id_usuario.toString().includes(term)) ? 1 : 0.3);
         });
         
+        // Redimensionamiento
         window.addEventListener('resize', function() {
-            const newWidth = svg.node().clientWidth;
+            const newWidth = container.clientWidth;
             svg.attr('width', newWidth);
             update(root);
         });
 
-        function wrap(text, maxWidth) {
-            text.each(function() {
-                const textElement = d3.select(this);
-                const content = textElement.text();
-                const y = textElement.attr("y");
-                const dy = parseFloat(textElement.attr("dy") || 0);
-                
-                // Limpiar el texto existente
-                textElement.text(null);
-                
-                // Medir el texto completo
-                const testSpan = textElement.append("tspan")
-                    .text(content)
-                    .style("visibility", "hidden");
-                
-                const textWidth = testSpan.node().getComputedTextLength();
-                testSpan.remove();
-                
-                // Si el texto cabe, mostrarlo completo
-                if (textWidth <= maxWidth) {
-                    textElement.append("tspan")
-                        .attr("x", 0)
-                        .attr("y", y)
-                        .attr("dy", dy + "em")
-                        .text(content);
-                    return;
-                }
-                
-                // Función para calcular el ancho del texto con puntos suspensivos
-                function getEllipsisWidth(text) {
-                    const t = textElement.append("tspan")
-                        .text(text)
-                        .style("visibility", "hidden");
-                    const w = t.node().getComputedTextLength();
-                    t.remove();
-                    return w;
-                }
-                
-                // Encontrar el punto óptimo para cortar el texto
-                let startLength = Math.floor(content.length * 0.4); // 40% del nombre al inicio
-                let endLength = Math.floor(content.length * 0.3);  // 30% del nombre al final
-                
-                let bestFit = null;
-                let bestFitWidth = 0;
-                
-                // Ajustar iterativamente para encontrar el mejor corte
-                for (let i = 0; i < 5; i++) {
-                    const startText = content.substring(0, startLength);
-                    const endText = content.substring(content.length - endLength);
-                    const ellipsisText = startText + "..." + endText;
-                    const ellipsisWidth = getEllipsisWidth(ellipsisText);
-                    
-                    if (ellipsisWidth <= maxWidth && ellipsisWidth > bestFitWidth) {
-                        bestFit = ellipsisText;
-                        bestFitWidth = ellipsisWidth;
-                    }
-                    
-                    // Ajustar proporciones para la siguiente iteración
-                    if (ellipsisWidth > maxWidth) {
-                        startLength = Math.max(1, startLength - 1);
-                        endLength = Math.max(1, endLength - 1);
-                    } else {
-                        startLength = Math.min(content.length - endLength - 3, startLength + 1);
-                        endLength = Math.min(content.length - startLength - 3, endLength + 1);
-                    }
-                }
-                
-                // Si encontramos un buen ajuste, usarlo
-                if (bestFit) {
-                    textElement.append("tspan")
-                        .attr("x", 0)
-                        .attr("y", y)
-                        .attr("dy", dy + "em")
-                        .text(bestFit);
-                } else {
-                    // Si no, dividir en dos líneas
-                    const midPoint = Math.floor(content.length / 2);
-                    textElement.append("tspan")
-                        .attr("x", 0)
-                        .attr("y", y)
-                        .attr("dy", dy + "em")
-                        .text(content.substring(0, midPoint));
-                    
-                    textElement.append("tspan")
-                        .attr("x", 0)
-                        .attr("y", y)
-                        .attr("dy", dy + 1.1 + "em")
-                        .text(content.substring(midPoint));
-                }
-            });
-        }
-
-            // Expandir todos los nodos
+        // Controladores de botones
         document.getElementById("expandAll").addEventListener("click", () => {
             root.descendants().forEach(d => {
-                if (d._children) {
+                if (d._children && d.depth < 2) {
                     d.children = d._children;
                     d._children = null;
                 }
@@ -529,84 +605,83 @@
             update(root);
         });
 
-        // Contraer todos los nodos
-            document.getElementById("collapseAll").addEventListener("click", () => {
+        document.getElementById("collapseAll").addEventListener("click", () => {
+            root.descendants().forEach(d => {
+                if (d.children && d.depth > 0) {
+                    d._children = d.children;
+                    d.children = null;
+                }
+            });
+            update(root);
+        });
+
+        document.getElementById("fullscreen").addEventListener("click", () => {
+            const elem = document.documentElement;
+            if (!document.fullscreenElement) {
+                elem.requestFullscreen().catch(err => console.error(err));
+            } else {
+                document.exitFullscreen();
+            }
+        });
+
+        document.getElementById("expandAllSimultaneously").addEventListener("click", () => {
+            function expandRecursively(d) {
+                if (d._children) {
+                    d.children = d._children;
+                    d._children = null;
+                }
+                if (d.children) {
+                    d.children.forEach(expandRecursively);
+                }
+            }
+            expandRecursively(root);
+            update(root);
+        });
+
+        document.getElementById("refreshTree").addEventListener("click", () => {
+            const refreshBtn = document.getElementById("refreshTree");
+            const originalText = refreshBtn.innerHTML;
+            refreshBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-1" role="status" aria-hidden="true"></span> Cargando...';
+            refreshBtn.disabled = true;
+            
+            g.selectAll("*").remove();
+            
+            d3.json("vistas/d3/datos.php").then(data => {
+                root = d3.hierarchy(data);
+                
                 root.descendants().forEach(d => {
-                    if (d.children && d.depth > 0) {
+                    nodeMap.set(d.data.id_usuario, d);
+                    if (d.children) {
                         d._children = d.children;
                         d.children = null;
                     }
                 });
-                update(root);
-            });
-
-        // Pantalla completa
-            document.getElementById("fullscreen").addEventListener("click", () => {
-                const elem = document.documentElement;
-                if (!document.fullscreenElement) {
-                    elem.requestFullscreen().catch(err => console.error(err));
-                } else {
-                    document.exitFullscreen();
-                }
-            });
-
-        // Expandir todos los nodos simultáneamente
-            document.getElementById("expandAllSimultaneously").addEventListener("click", () => {
-                function expandRecursively(d) {
-                    if (d._children) {
-                        d.children = d._children;
-                        d._children = null;
-                    }
-                    if (d.children) {
-                        d.children.forEach(expandRecursively);
-                    }
-                }
-                expandRecursively(root); // Iniciar expansión desde la raíz
-                update(root);
-            });
-        // Agregar este código junto con los otros event listeners de botones
-            document.getElementById("refreshTree").addEventListener("click", () => {
-                // Mostrar un indicador de carga
-                const refreshBtn = document.getElementById("refreshTree");
-                refreshBtn.innerHTML = "⏳ Cargando...";
-                refreshBtn.disabled = true;
                 
-                // Limpiar el SVG temporalmente
-                g.selectAll("*").remove();
+                if (root._children) {
+                    root.children = root._children;
+                    root._children = null;
+                }
                 
-                // Volver a cargar los datos
-                d3.json("vistas/d3/datos.php").then(data => {
-                    root = d3.hierarchy(data);
-                    
-                    root.descendants().forEach(d => {
-                        nodeMap.set(d.data.id, d);
-                        if (d.children) {
-                            d._children = d.children;
-                            d.children = null;
-                        }
-                    });
-                    
-                    // Expandir solo el nodo raíz
-                    if (root._children) {
-                        root.children = root._children;
-                        root._children = null;
-                    }
-                    
-                    // Calcular layout y actualizar
-                    treeLayout(root);
-                    update(root);
-                    
-                    // Restaurar el botón
-                    refreshBtn.innerHTML = "🔄 Actualizar Árbol";
-                    refreshBtn.disabled = false;
-                    
-                }).catch(error => {
-                    console.error("Error al actualizar:", error);
-                    alert("Error al actualizar el árbol");
-                    refreshBtn.innerHTML = "🔄 Actualizar Árbol";
-                    refreshBtn.disabled = false;
+                treeLayout(root);
+                update(root);
+                
+                refreshBtn.innerHTML = originalText;
+                refreshBtn.disabled = false;
+                
+            }).catch(error => {
+                console.error("Error al actualizar:", error);
+                refreshBtn.innerHTML = originalText;
+                refreshBtn.disabled = false;
+                
+                Swal.fire({
+                    title: 'Error',
+                    text: 'No se pudo actualizar el árbol',
+                    icon: 'error',
+                    confirmButtonText: 'OK'
                 });
             });
+        });
+    });
     </script>
 </body>
 </html>

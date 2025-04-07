@@ -47,6 +47,12 @@
                             <i class="ri-layout-grid-line"></i> <span data-key="">Genealogia</span>
                             </a>
                         </li>
+                        
+                        <li class="nav-item">
+                            <a class="nav-link menu-link" href="https://genealogia.hv-inversiones.com/">
+                            <i class="ri-layout-grid-line"></i> <span data-key="">Genealogia externo</span>
+                            </a>
+                        </li>
                        
 
                     </ul>

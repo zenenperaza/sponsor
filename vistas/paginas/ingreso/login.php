@@ -56,7 +56,7 @@ $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
 
                                         <div class="mb-3">
                                             <div class="float-end">
-                                                <a href="auth-pass-reset-basic.html" class="text-muted">Forgot password?</a>
+                                                <a href="recuperar" class="text-muted">Olvidaste tu contraseña?</a>
                                             </div>
                                             <label class="form-label" for="password-input">Password</label>
                                             <div class="position-relative auth-pass-inputgroup mb-3">
@@ -65,16 +65,19 @@ $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
                                             </div>
                                         </div>
 
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="" id="auth-remember-check">
-                                            <label class="form-check-label" for="auth-remember-check">Remember me</label>
-                                        </div>
+                                       
 
                                         <div class="mt-4">
                                             <button class="btn btn-success w-100" type="submit" name="btnLoginUsuario">Sign In</button>
                                         </div>
 
                                     </form>
+                                    <?php 
+
+                                        $Login = new ControladorUsuarios();
+                                        $Login -> ctrLoginUsuario();
+                                        
+                                        ?>
                                 </div>
                             </div>
                             <!-- end card body -->
@@ -82,7 +85,7 @@ $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
                         <!-- end card -->
 
                         <div class="mt-4 text-center fs-5" style="color: white;">
-                            <p class="mb-0">Don't have an account ? <a href="registro" class="fw-semibold  text-decoration-underline" style="color: white!important;"> Signup </a> </p>
+                            <p class="mb-0">¿No tienes una cuenta?  <a href="registro" class="fw-semibold  text-decoration-underline" style="color: white!important;"> Regístrate </a> </p>
                         </div>
 
                     </div>
@@ -130,14 +133,25 @@ $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
         
     <!-- Sweet alert init js-->
     <script src="vistas/assets/js/pages/sweetalerts.init.js"></script>
+    <script>
+    document.getElementById("password-addon").addEventListener("click", function() {
+        const passwordInput = document.getElementById("password-input");
+        const icon = this.querySelector("i");
+        
+        if (passwordInput.type === "password") {
+            passwordInput.type = "text";
+            icon.classList.replace("ri-eye-fill", "ri-eye-off-fill"); // Cambia el ícono
+        } else {
+            passwordInput.type = "password";
+            icon.classList.replace("ri-eye-off-fill", "ri-eye-fill"); // Restaura el ícono
+        }
+    });
+
+
+</script>
+
 </body>
 
 </html>
 
 
-<?php 
-
-$Login = new ControladorUsuarios();
-$Login -> ctrLoginUsuario();
-
-?>

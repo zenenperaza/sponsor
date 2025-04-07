@@ -104,16 +104,18 @@
 
                                             <div class="row">
                                                 
-                                            <div class="col-lg-6">
-                                                    <div class="mb-3">
-                                                        <label class="form-label">Contraseña <span class="text-danger">*</span></label>
-                                                        <input type="password" class="form-control" name="password" required>
+                                                <div class="col-lg-6">
+                                                    <label class="form-label" for="password-input-1">Password</label>
+                                                    <div class="position-relative auth-pass-inputgroup mb-3">
+                                                        <input type="password" name="password" class="form-control pe-5" placeholder="Enter password" id="password-input-1">
+                                                        <button class="btn btn-link position-absolute end-0 top-0 text-decoration-none text-muted" type="button" id="password-addon"><i class="ri-eye-fill align-middle"></i></button>
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-6">
-                                                    <div class="mb-3">
-                                                        <label class="form-label">Confirmar Contraseña <span class="text-danger">*</span></label>
-                                                        <input type="password" class="form-control" name="password2" required>
+                                                <label class="form-label" for="password-input-2">Password</label>
+                                                    <div class="position-relative auth-pass-inputgroup mb-3">
+                                                        <input type="password" name="password2" class="form-control pe-5" placeholder="Enter password" id="password-input-2">
+                                                        <button class="btn btn-link position-absolute end-0 top-0 text-decoration-none text-muted" type="button" id="password-addon"><i class="ri-eye-fill align-middle"></i></button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -122,14 +124,16 @@
                                                 <div class="col-lg-6">
                                                     <div class="mb-3">
                                                         <label class="form-label">ID de Patrocinador</label>
-                                                        <input type="text" class="form-control" name="id_patrocinador">
+                                                        <input type="text" class="form-control" name="padre_id" required>
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-6">  
                                                     <div class="mb-3">
                                                         <label class="form-label">Tu ID</label>
-                                                        <input type="text" class="form-control" name="id_usuario" value="<?php echo htmlspecialchars(ControladorUsuarios::codigoPatrocinadorUnico()); ?>" required>
+                                                        <input type="text" class="form-control" name="id_usuario" value="" required>
                                                     </div>
+                                                    
+                                                    <label for="">el ID debera ser unico </label>
                                                 </div>
 
                                             </div>
@@ -248,7 +252,80 @@
 <script src="vistas/assets/js/pages/sweetalerts.init.js"></script>
 
 <script>
+    document.querySelectorAll('.auth-pass-inputgroup button').forEach(button => {
+        button.addEventListener('click', function() {
+            const input = this.parentElement.querySelector('input');
+            const icon = this.querySelector('i');
+            
+            input.type = input.type === 'password' ? 'text' : 'password';
+            icon.classList.toggle('ri-eye-fill');
+            icon.classList.toggle('ri-eye-off-fill');
+        });
+    });
+    
+    
+      /*=============================================
+VALIDAR EMAIL REPETIDO
+=============================================*/
 
+// var ruta = $("#ruta").val();
+
+document.querySelector("input[name='email']").addEventListener('change', function() {
+    const email = this.value.trim();
+    
+    // Validación básica del email
+    if (!email) {
+        return; // No hacer nada si el campo está vacío
+    }
+
+    // Limpiar alertas previas
+    const existingAlert = this.nextElementSibling;
+    if (existingAlert && existingAlert.classList.contains('alert')) {
+        existingAlert.remove();
+    }
+
+    const datos = new FormData();
+    datos.append("validarEmail", email);
+
+    fetch("../ajax/usuarios.ajax.php", {
+        method: "POST",
+        body: datos,
+        cache: "no-store",
+        headers: {
+            'Accept': 'application/json'
+        }
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Error en la respuesta del servidor');
+        }
+        return response.json();
+    })
+    .then(respuesta => {
+        if (respuesta) {
+            // Limpiar el campo de email
+            this.value = "";
+            
+            // Crear elemento de alerta
+            const alertDiv = document.createElement('div');
+            alertDiv.className = 'alert alert-warning';
+            alertDiv.innerHTML = `
+                <strong>ERROR:</strong>
+                El correo electrónico ya existe en la base de datos, por favor ingrese otro diferente
+            `;
+            
+            // Insertar después del input
+            this.insertAdjacentElement('afterend', alertDiv);
+            
+            // Enfocar el campo nuevamente
+            this.focus();
+        }
+    })
+    .catch(error => {
+        console.error("Error en la solicitud fetch:", error);
+        // Podrías agregar aquí manejo de errores si lo deseas
+    });
+});
 </script>
 
 <?php 

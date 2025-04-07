@@ -4,7 +4,7 @@ class ControladorRuta{
 
 	static public function ctrRuta(){
 
-		return "http://localhost/sponsors/";
+		return "https://sponsor.hv-inversiones.com/";
 
 	}
 

@@ -18,7 +18,7 @@ foreach ($routesArray as $key => $value) {
 }
 
 $ruta = ControladorRuta::ctrRuta();
-
+// var_dump($routesArray);
 ?>
 <!doctype html>
 <html lang="en" data-layout="vertical" data-topbar="light" data-sidebar="dark" data-sidebar-size="lg" data-sidebar-image="none">
@@ -61,7 +61,49 @@ $ruta = ControladorRuta::ctrRuta();
 
     
 <?php
+
+
+
+if(!empty($_SERVER["HTTPS"]) && ("on" == $_SERVER["HTTPS"])){ 
+
+  if(!isset($_SESSION["iniciarSesion"])){
+
+    if(empty($routesArray[1]) || $routesArray[1] == ""){
+
+      include "paginas/ingreso/ingreso.php"; 
+
+    } elseif(!empty($routesArray[1])){
+
+      if( $routesArray[1] == "" ){  
+        
+        include "ingreso.php"; 
+
+      } elseif( $routesArray[1] == "ingreso" ||
+         $routesArray[1] == "registro" ||
+         $routesArray[1] == "usuarios" ||
+         $routesArray[1] == "login"){  
+        
+         include "paginas/ingreso/".$routesArray[1].".php";           
+
+        } else {          
+          
+          include "paginas/ingreso/404.php";
+        }
+
+      } 
+
   
+
+
+
+    echo '</body></head>';
+
+    return;
+
+  }
+
+} else {
+
   if(!isset($_SESSION["iniciarSesion"])){
 
     if(empty($routesArray[2]) || $routesArray[1] == ""){
@@ -92,11 +134,16 @@ $ruta = ControladorRuta::ctrRuta();
 
 
 
-   echo '</body></head>';
+    echo '</body></head>';
 
-   return;
+    return;
 
   }
+
+
+} 
+  
+
 
 
     
@@ -108,17 +155,27 @@ if(isset($_SESSION["iniciarSesion"]) && $_SESSION["iniciarSesion"] == "ok"){
      
     include "paginas/modulos/header.php";
     include "paginas/modulos/menu.php";
+    
+  if(!empty($_SERVER["HTTPS"]) && ("on" == $_SERVER["HTTPS"])){ 
 
-if(!empty($routesArray[2])){
+    $routesArrayGeneral = $routesArray[1];
+
+  } else {
+
+    $routesArrayGeneral = $routesArray[2];
+
+  }
+
+  if(!empty($routesArrayGeneral)){
       
-      if( $routesArray[2] == "inicio" ||
-         $routesArray[2] == "usuarios" ||
-         $routesArray[2] == "admin" ||
-         $routesArray[2] == "genealogia" ||
-         $routesArray[2] == "perfil" ||
-         $routesArray[2] == "logout"){  
+      if( $routesArrayGeneral == "inicio" ||
+         $routesArrayGeneral == "usuarios" ||
+         $routesArrayGeneral == "admin" ||
+         $routesArrayGeneral == "genealogia" ||
+         $routesArrayGeneral == "perfil" ||
+         $routesArrayGeneral == "logout"){  
         
-        include "paginas/".$routesArray[2]."/".$routesArray[2].".php";       
+        include "paginas/".$routesArrayGeneral."/".$routesArrayGeneral.".php";       
         
 
       }else {          

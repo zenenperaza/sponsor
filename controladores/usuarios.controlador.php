@@ -105,10 +105,22 @@ static public function ctrRegistroUsuario(){
         $item = "email";
         $valor = $_POST["email"];
         
-        $respuesta = ModeloUsuarios::mdlMostrarUsuarios($tabla, $item, $valor);
+        $respuesta1 = ModeloUsuarios::mdlMostrarUsuarios($tabla, $item, $valor);
         
-        if(isset($respuesta["email"]) && $respuesta["email"] == $_POST["email"]){
+        if(isset($respuesta1["email"]) && $respuesta1["email"] == $_POST["email"]){
             self::mostrarError('El correo ya está registrado');
+            return;
+        }
+        
+           // Verificar email único
+        $tabla = "usuarios";
+        $item = "id_usuario";
+        $valor = $_POST["id_usuario"];
+        
+        $respuesta2 = ModeloUsuarios::mdlMostrarUsuarios($tabla, $item, $valor);
+        
+         if($respuesta2["id_usuario"] == $_POST["id_usuario"]){
+            self::mostrarError('El ID del Usuario ya está registrado');
             return;
         }
 
@@ -126,7 +138,7 @@ static public function ctrRegistroUsuario(){
             "telefono" => $_POST["telefono"] ?? null,
             "pais" => $_POST["pais"] ?? null,
             "ciudad" => $_POST["ciudad"] ?? null,
-            "id_patrocinador" => $_POST["id_patrocinador"] ?? null,
+            "padre_id" => $_POST["padre_id"] ?? null,
             "id_usuario" => $_POST["id_usuario"] ?? null,
             "verificacion" => 0,
             "email_encriptado" => $encriptarEmail
@@ -137,30 +149,33 @@ static public function ctrRegistroUsuario(){
 
         if($respuesta == "ok"){
             echo '<script>
-                    Swal.fire({
-                        html: `<div class="mt-3">
-                            <div class="avatar-lg mx-auto">
-                                <div class="avatar-title bg-light text-success display-5 rounded-circle">
-                                    <i class="ri-mail-send-fill"></i>
-                                </div>
-                            </div>
-                            <div class="mt-4 pt-2 fs-15">
-                                <h4 class="fs-20 fw-semibold">¡Registro exitoso!</h4>
-                                <p class="text-muted mb-0 mt-3 fs-13">
-                                    Te hemos enviado un correo de verificación a 
-                                    <span class="fw-medium text-dark">'.$_POST["email"].'</span>
-                                </p>
-                            </div>
-                        </div>`,
-                        showConfirmButton: true
-                    }).then(function(result){
+            Swal.fire({
+                html: `<div class="mt-3">
+                          <lord-icon 
+                              src="https://cdn.lordicon.com/lupuorrc.json" 
+                              trigger="loop" 
+                              colors="primary:#0ab39c,secondary:#405189" 
+                              style="width:120px;height:120px">
+                          </lord-icon>
+                          <div class="mt-4 pt-2 fs-15">
+                              <h4>¡Registro exitoso!</h4>
+                              <p class="text-muted mx-4 mb-0">Tu registro se ha completado correctamente.</p>
+                          </div>
+                      </div>`,
+                showCancelButton: false,
+                showConfirmButton: true,
+                confirmButtonClass: "btn btn-success w-xs mb-1",
+                confirmButtonText: "Aceptar",
+                buttonsStyling: false,
+                showCloseButton: false
+            }).then(function(result){
                         if(result.value){
 
-                                window.location = "ingreso";
+                                window.location = "login";
 
                         }
             });
-            </script>';
+        </script>';
         }
     }
 }
@@ -303,7 +318,7 @@ static public function codigoPatrocinadorUnico() {
 
 		
             
-            $stmt = $conexion->prepare("SELECT COUNT(id) FROM usuarios WHERE id_patrocinador = :codigo");
+            $stmt = $conexion->prepare("SELECT COUNT(id) FROM usuarios WHERE padre_id = :codigo");
             $stmt->bindParam(':codigo', $codigo, PDO::PARAM_STR);
             $stmt->execute();
             

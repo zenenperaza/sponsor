@@ -1,9 +1,9 @@
 <?php
 // Configuración de la base de datos
 $host = 'localhost';
-$db   = 'd3';
-$user = 'root';
-$pass = '';
+$db   = 'u539586759_sponsors';
+$user = 'u539586759_sponsors';
+$pass = 'Zenen12345$';
 $charset = 'utf8mb4';
 
 $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
@@ -19,25 +19,25 @@ try {
 }
 
 // Obtener todas las personas
-$stmt = $pdo->query("SELECT id, nombre, padre_id, foto, email, descripcion FROM usuarios"); // Incluir email y descripcion
+$stmt = $pdo->query("SELECT id_usuario, nombre, padre_id, foto, email, descripcion FROM usuarios"); // Incluir email y descripcion
 $usuarios = $stmt->fetchAll();
 
-// Indexar por id
+// Indexar por id_usuario
 $indexed = [];
 foreach ($usuarios as $usuario) {
     $usuario['children'] = []; // Para D3, los nodos hijos se guardarán en 'children'
-    $indexed[$usuario['id']] = $usuario;
+    $indexed[$usuario['id_usuario']] = $usuario;
 }
 
 // Construir el árbol
 $root = null;
-foreach ($indexed as $id => $usuario) {
+foreach ($indexed as $id_usuario => $usuario) {
     if ($usuario['padre_id'] === null) {
         // Nodo raíz
-        $root = &$indexed[$id];
+        $root = &$indexed[$id_usuario];
     } else {
         // Agregar como hijo al nodo padre
-        $indexed[$usuario['padre_id']]['children'][] = &$indexed[$id];
+        $indexed[$usuario['padre_id']]['children'][] = &$indexed[$id_usuario];
     }
 }
 

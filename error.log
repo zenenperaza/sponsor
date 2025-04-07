@@ -1,186 +1,81 @@
-[01-Apr-2025 15:47:59 Europe/Berlin] PHP Warning:  include(paginas/404/404.php): Failed to open stream: No such file or directory in D:\Onedrive\www\sponsors\vistas\plantilla.php on line 75
-[01-Apr-2025 15:47:59 Europe/Berlin] PHP Warning:  include(): Failed opening 'paginas/404/404.php' for inclusion (include_path='D:\xampp\php\PEAR') in D:\Onedrive\www\sponsors\vistas\plantilla.php on line 75
-[01-Apr-2025 15:50:33 Europe/Berlin] PHP Warning:  Undefined array key 2 in D:\Onedrive\www\sponsors\vistas\plantilla.php on line 60
-[01-Apr-2025 15:51:39 Europe/Berlin] PHP Warning:  include(ingreso.php): Failed to open stream: No such file or directory in D:\Onedrive\www\sponsors\vistas\plantilla.php on line 78
-[01-Apr-2025 15:51:39 Europe/Berlin] PHP Warning:  include(): Failed opening 'ingreso.php' for inclusion (include_path='D:\xampp\php\PEAR') in D:\Onedrive\www\sponsors\vistas\plantilla.php on line 78
-[01-Apr-2025 15:52:06 Europe/Berlin] PHP Warning:  include(paginas/ingreso.php): Failed to open stream: No such file or directory in D:\Onedrive\www\sponsors\vistas\plantilla.php on line 78
-[01-Apr-2025 15:52:06 Europe/Berlin] PHP Warning:  include(): Failed opening 'paginas/ingreso.php' for inclusion (include_path='D:\xampp\php\PEAR') in D:\Onedrive\www\sponsors\vistas\plantilla.php on line 78
-[01-Apr-2025 15:52:34 Europe/Berlin] PHP Warning:  include(paginas/ingreso.php): Failed to open stream: No such file or directory in D:\Onedrive\www\sponsors\vistas\plantilla.php on line 78
-[01-Apr-2025 15:52:34 Europe/Berlin] PHP Warning:  include(): Failed opening 'paginas/ingreso.php' for inclusion (include_path='D:\xampp\php\PEAR') in D:\Onedrive\www\sponsors\vistas\plantilla.php on line 78
-[01-Apr-2025 16:04:18 Europe/Berlin] PHP Parse error:  syntax error, unexpected token "if", expecting "(" in D:\Onedrive\www\sponsors\vistas\plantilla.php on line 67
-[01-Apr-2025 16:04:21 Europe/Berlin] PHP Parse error:  syntax error, unexpected token "if", expecting "(" in D:\Onedrive\www\sponsors\vistas\plantilla.php on line 67
-[01-Apr-2025 16:06:21 Europe/Berlin] PHP Warning:  Undefined array key 2 in D:\Onedrive\www\sponsors\vistas\plantilla.php on line 83
-[01-Apr-2025 16:06:21 Europe/Berlin] PHP Warning:  Undefined array key 2 in D:\Onedrive\www\sponsors\vistas\plantilla.php on line 83
-[01-Apr-2025 16:06:21 Europe/Berlin] PHP Warning:  include(paginas//.php): Failed to open stream: No such file or directory in D:\Onedrive\www\sponsors\vistas\plantilla.php on line 83
-[01-Apr-2025 16:06:21 Europe/Berlin] PHP Warning:  include(): Failed opening 'paginas//.php' for inclusion (include_path='D:\xampp\php\PEAR') in D:\Onedrive\www\sponsors\vistas\plantilla.php on line 83
-[01-Apr-2025 16:07:01 Europe/Berlin] PHP Warning:  Undefined array key 2 in D:\Onedrive\www\sponsors\vistas\plantilla.php on line 82
-[01-Apr-2025 16:07:01 Europe/Berlin] PHP Warning:  Undefined array key 2 in D:\Onedrive\www\sponsors\vistas\plantilla.php on line 82
-[01-Apr-2025 16:07:01 Europe/Berlin] PHP Warning:  include(paginas//.php): Failed to open stream: No such file or directory in D:\Onedrive\www\sponsors\vistas\plantilla.php on line 82
-[01-Apr-2025 16:07:01 Europe/Berlin] PHP Warning:  include(): Failed opening 'paginas//.php' for inclusion (include_path='D:\xampp\php\PEAR') in D:\Onedrive\www\sponsors\vistas\plantilla.php on line 82
-[01-Apr-2025 16:08:31 Europe/Berlin] PHP Warning:  Undefined array key 2 in D:\Onedrive\www\sponsors\vistas\plantilla.php on line 60
-[01-Apr-2025 16:10:07 Europe/Berlin] PHP Warning:  include(paginas/sponsors/sponsors.php): Failed to open stream: No such file or directory in D:\Onedrive\www\sponsors\vistas\plantilla.php on line 82
-[01-Apr-2025 16:10:07 Europe/Berlin] PHP Warning:  include(): Failed opening 'paginas/sponsors/sponsors.php' for inclusion (include_path='D:\xampp\php\PEAR') in D:\Onedrive\www\sponsors\vistas\plantilla.php on line 82
-[01-Apr-2025 16:14:01 Europe/Berlin] PHP Warning:  Undefined array key 2 in D:\Onedrive\www\sponsors\vistas\plantilla.php on line 60
-[01-Apr-2025 16:15:01 Europe/Berlin] PHP Warning:  include(ingreso.php): Failed to open stream: No such file or directory in D:\Onedrive\www\sponsors\vistas\plantilla.php on line 62
-[01-Apr-2025 16:15:01 Europe/Berlin] PHP Warning:  include(): Failed opening 'ingreso.php' for inclusion (include_path='D:\xampp\php\PEAR') in D:\Onedrive\www\sponsors\vistas\plantilla.php on line 62
-[01-Apr-2025 16:15:01 Europe/Berlin] PHP Warning:  include(paginas/sponsors/sponsors.php): Failed to open stream: No such file or directory in D:\Onedrive\www\sponsors\vistas\plantilla.php on line 88
-[01-Apr-2025 16:15:01 Europe/Berlin] PHP Warning:  include(): Failed opening 'paginas/sponsors/sponsors.php' for inclusion (include_path='D:\xampp\php\PEAR') in D:\Onedrive\www\sponsors\vistas\plantilla.php on line 88
-[01-Apr-2025 16:15:28 Europe/Berlin] PHP Warning:  include(paginas/sponsors/sponsors.php): Failed to open stream: No such file or directory in D:\Onedrive\www\sponsors\vistas\plantilla.php on line 88
-[01-Apr-2025 16:15:28 Europe/Berlin] PHP Warning:  include(): Failed opening 'paginas/sponsors/sponsors.php' for inclusion (include_path='D:\xampp\php\PEAR') in D:\Onedrive\www\sponsors\vistas\plantilla.php on line 88
-[01-Apr-2025 16:24:02 Europe/Berlin] PHP Warning:  include(paginas/sponsors/sponsors.php): Failed to open stream: No such file or directory in D:\Onedrive\www\sponsors\vistas\plantilla.php on line 89
-[01-Apr-2025 16:24:02 Europe/Berlin] PHP Warning:  include(): Failed opening 'paginas/sponsors/sponsors.php' for inclusion (include_path='D:\xampp\php\PEAR') in D:\Onedrive\www\sponsors\vistas\plantilla.php on line 89
-[01-Apr-2025 16:28:23 Europe/Berlin] PHP Warning:  include(paginas/sponsors/sponsors.php): Failed to open stream: No such file or directory in D:\Onedrive\www\sponsors\vistas\plantilla.php on line 89
-[01-Apr-2025 16:28:23 Europe/Berlin] PHP Warning:  include(): Failed opening 'paginas/sponsors/sponsors.php' for inclusion (include_path='D:\xampp\php\PEAR') in D:\Onedrive\www\sponsors\vistas\plantilla.php on line 89
-[01-Apr-2025 16:28:28 Europe/Berlin] PHP Warning:  include(paginas/sponsors/sponsors.php): Failed to open stream: No such file or directory in D:\Onedrive\www\sponsors\vistas\plantilla.php on line 89
-[01-Apr-2025 16:28:28 Europe/Berlin] PHP Warning:  include(): Failed opening 'paginas/sponsors/sponsors.php' for inclusion (include_path='D:\xampp\php\PEAR') in D:\Onedrive\www\sponsors\vistas\plantilla.php on line 89
-[01-Apr-2025 16:29:14 Europe/Berlin] PHP Warning:  include(paginas/sponsors/sponsors.php): Failed to open stream: No such file or directory in D:\Onedrive\www\sponsors\vistas\plantilla.php on line 89
-[01-Apr-2025 16:29:14 Europe/Berlin] PHP Warning:  include(): Failed opening 'paginas/sponsors/sponsors.php' for inclusion (include_path='D:\xampp\php\PEAR') in D:\Onedrive\www\sponsors\vistas\plantilla.php on line 89
-[01-Apr-2025 16:29:36 Europe/Berlin] PHP Warning:  include(paginas/sponsors/sponsors.php): Failed to open stream: No such file or directory in D:\Onedrive\www\sponsors\vistas\plantilla.php on line 89
-[01-Apr-2025 16:29:36 Europe/Berlin] PHP Warning:  include(): Failed opening 'paginas/sponsors/sponsors.php' for inclusion (include_path='D:\xampp\php\PEAR') in D:\Onedrive\www\sponsors\vistas\plantilla.php on line 89
-[01-Apr-2025 16:30:16 Europe/Berlin] PHP Warning:  include(paginas/sponsors/sponsors.php): Failed to open stream: No such file or directory in D:\Onedrive\www\sponsors\vistas\plantilla.php on line 89
-[01-Apr-2025 16:30:16 Europe/Berlin] PHP Warning:  include(): Failed opening 'paginas/sponsors/sponsors.php' for inclusion (include_path='D:\xampp\php\PEAR') in D:\Onedrive\www\sponsors\vistas\plantilla.php on line 89
-[01-Apr-2025 16:31:01 Europe/Berlin] PHP Warning:  include(paginas/sponsors/sponsors.php): Failed to open stream: No such file or directory in D:\Onedrive\www\sponsors\vistas\plantilla.php on line 89
-[01-Apr-2025 16:31:01 Europe/Berlin] PHP Warning:  include(): Failed opening 'paginas/sponsors/sponsors.php' for inclusion (include_path='D:\xampp\php\PEAR') in D:\Onedrive\www\sponsors\vistas\plantilla.php on line 89
-[01-Apr-2025 16:31:41 Europe/Berlin] PHP Warning:  include(ingreso.php): Failed to open stream: No such file or directory in D:\Onedrive\www\sponsors\vistas\plantilla.php on line 84
-[01-Apr-2025 16:31:41 Europe/Berlin] PHP Warning:  include(): Failed opening 'ingreso.php' for inclusion (include_path='D:\xampp\php\PEAR') in D:\Onedrive\www\sponsors\vistas\plantilla.php on line 84
-[01-Apr-2025 16:32:24 Europe/Berlin] PHP Warning:  include(ingreso.php): Failed to open stream: No such file or directory in D:\Onedrive\www\sponsors\vistas\plantilla.php on line 84
-[01-Apr-2025 16:32:24 Europe/Berlin] PHP Warning:  include(): Failed opening 'ingreso.php' for inclusion (include_path='D:\xampp\php\PEAR') in D:\Onedrive\www\sponsors\vistas\plantilla.php on line 84
-[01-Apr-2025 16:37:07 Europe/Berlin] PHP Warning:  include(paginas/ingreso/sls.php): Failed to open stream: No such file or directory in D:\Onedrive\www\sponsors\vistas\plantilla.php on line 80
-[01-Apr-2025 16:37:07 Europe/Berlin] PHP Warning:  include(): Failed opening 'paginas/ingreso/sls.php' for inclusion (include_path='D:\xampp\php\PEAR') in D:\Onedrive\www\sponsors\vistas\plantilla.php on line 80
-[02-Apr-2025 17:24:52 Europe/Berlin] PHP Warning:  Undefined variable $tu_conexion_mysqli in D:\Onedrive\www\sponsors\vistas\paginas\ingreso\registro.php on line 281
-[02-Apr-2025 17:24:52 Europe/Berlin] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in D:\Onedrive\www\sponsors\vistas\paginas\ingreso\registro.php:265
+[06-Apr-2025 18:32:59 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [1045] Access denied for user 'u539586759_sponsor'@'localhost' (using password: YES) in /home/u539586759/domains/hv-inversiones.com/public_html/sponsor/modelos/conexion.php:7
 Stack trace:
-#0 D:\Onedrive\www\sponsors\vistas\paginas\ingreso\registro.php(281): codigoPatrocinadorUnico(NULL)
-#1 D:\Onedrive\www\sponsors\vistas\plantilla.php(75): include('D:\\Onedrive\\www...')
-#2 D:\Onedrive\www\sponsors\controladores\plantilla.controlador.php(7): include('D:\\Onedrive\\www...')
-#3 D:\Onedrive\www\sponsors\index.php(25): ControladorPlantilla->ctrPlantilla()
-#4 {main}
-  thrown in D:\Onedrive\www\sponsors\vistas\paginas\ingreso\registro.php on line 265
-[02-Apr-2025 17:35:31 Europe/Berlin] PHP Warning:  Undefined variable $codigoSponsor in D:\Onedrive\www\sponsors\vistas\paginas\ingreso\registro.php on line 110
-[02-Apr-2025 17:39:36 Europe/Berlin] PHP Fatal error:  Uncaught Error: Call to undefined method ControladorUsuarios::codigoSponsor() in D:\Onedrive\www\sponsors\vistas\paginas\ingreso\registro.php:110
+#0 /home/u539586759/domains/hv-inversiones.com/public_html/sponsor/modelos/conexion.php(7): PDO->__construct()
+#1 /home/u539586759/domains/hv-inversiones.com/public_html/sponsor/modelos/usuarios.modelo.php(15): Conexion::conectar()
+#2 /home/u539586759/domains/hv-inversiones.com/public_html/sponsor/controladores/usuarios.controlador.php(26): ModeloUsuarios::mdlMostrarUsuarios()
+#3 /home/u539586759/domains/hv-inversiones.com/public_html/sponsor/vistas/paginas/ingreso/login.php(155): ControladorUsuarios::ctrLoginUsuario()
+#4 /home/u539586759/domains/hv-inversiones.com/public_html/sponsor/vistas/plantilla.php(82): include('/home/u53958675...')
+#5 /home/u539586759/domains/hv-inversiones.com/public_html/sponsor/controladores/plantilla.controlador.php(7): include('/home/u53958675...')
+#6 /home/u539586759/domains/hv-inversiones.com/public_html/sponsor/index.php(25): ControladorPlantilla->ctrPlantilla()
+#7 {main}
+  thrown in /home/u539586759/domains/hv-inversiones.com/public_html/sponsor/modelos/conexion.php on line 7
+[06-Apr-2025 18:35:07 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [1045] Access denied for user 'u539586759_sponsor'@'localhost' (using password: YES) in /home/u539586759/domains/hv-inversiones.com/public_html/sponsor/modelos/conexion.php:7
 Stack trace:
-#0 D:\Onedrive\www\sponsors\vistas\plantilla.php(75): include()
-#1 D:\Onedrive\www\sponsors\controladores\plantilla.controlador.php(7): include('D:\\Onedrive\\www...')
-#2 D:\Onedrive\www\sponsors\index.php(25): ControladorPlantilla->ctrPlantilla()
-#3 {main}
-  thrown in D:\Onedrive\www\sponsors\vistas\paginas\ingreso\registro.php on line 110
-[02-Apr-2025 17:40:34 Europe/Berlin] PHP Fatal error:  Uncaught Error: Call to undefined method ControladorUsuarios::codigoSponsor() in D:\Onedrive\www\sponsors\vistas\paginas\ingreso\registro.php:110
+#0 /home/u539586759/domains/hv-inversiones.com/public_html/sponsor/modelos/conexion.php(7): PDO->__construct()
+#1 /home/u539586759/domains/hv-inversiones.com/public_html/sponsor/modelos/usuarios.modelo.php(15): Conexion::conectar()
+#2 /home/u539586759/domains/hv-inversiones.com/public_html/sponsor/controladores/usuarios.controlador.php(26): ModeloUsuarios::mdlMostrarUsuarios()
+#3 /home/u539586759/domains/hv-inversiones.com/public_html/sponsor/vistas/paginas/ingreso/login.php(155): ControladorUsuarios::ctrLoginUsuario()
+#4 /home/u539586759/domains/hv-inversiones.com/public_html/sponsor/vistas/plantilla.php(82): include('/home/u53958675...')
+#5 /home/u539586759/domains/hv-inversiones.com/public_html/sponsor/controladores/plantilla.controlador.php(7): include('/home/u53958675...')
+#6 /home/u539586759/domains/hv-inversiones.com/public_html/sponsor/index.php(25): ControladorPlantilla->ctrPlantilla()
+#7 {main}
+  thrown in /home/u539586759/domains/hv-inversiones.com/public_html/sponsor/modelos/conexion.php on line 7
+[06-Apr-2025 18:35:17 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [1045] Access denied for user 'u539586759_sponsor'@'localhost' (using password: YES) in /home/u539586759/domains/hv-inversiones.com/public_html/sponsor/modelos/conexion.php:7
 Stack trace:
-#0 D:\Onedrive\www\sponsors\vistas\plantilla.php(75): include()
-#1 D:\Onedrive\www\sponsors\controladores\plantilla.controlador.php(7): include('D:\\Onedrive\\www...')
-#2 D:\Onedrive\www\sponsors\index.php(25): ControladorPlantilla->ctrPlantilla()
-#3 {main}
-  thrown in D:\Onedrive\www\sponsors\vistas\paginas\ingreso\registro.php on line 110
-[02-Apr-2025 17:40:48 Europe/Berlin] PHP Fatal error:  Uncaught Error: Call to undefined method ControladorUsuarios::codigoSponsor() in D:\Onedrive\www\sponsors\vistas\paginas\ingreso\registro.php:110
+#0 /home/u539586759/domains/hv-inversiones.com/public_html/sponsor/modelos/conexion.php(7): PDO->__construct()
+#1 /home/u539586759/domains/hv-inversiones.com/public_html/sponsor/modelos/usuarios.modelo.php(15): Conexion::conectar()
+#2 /home/u539586759/domains/hv-inversiones.com/public_html/sponsor/controladores/usuarios.controlador.php(26): ModeloUsuarios::mdlMostrarUsuarios()
+#3 /home/u539586759/domains/hv-inversiones.com/public_html/sponsor/vistas/paginas/ingreso/login.php(155): ControladorUsuarios::ctrLoginUsuario()
+#4 /home/u539586759/domains/hv-inversiones.com/public_html/sponsor/vistas/plantilla.php(82): include('/home/u53958675...')
+#5 /home/u539586759/domains/hv-inversiones.com/public_html/sponsor/controladores/plantilla.controlador.php(7): include('/home/u53958675...')
+#6 /home/u539586759/domains/hv-inversiones.com/public_html/sponsor/index.php(25): ControladorPlantilla->ctrPlantilla()
+#7 {main}
+  thrown in /home/u539586759/domains/hv-inversiones.com/public_html/sponsor/modelos/conexion.php on line 7
+[06-Apr-2025 18:35:49 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [1045] Access denied for user 'u539586759_sponsors'@'localhost' (using password: YES) in /home/u539586759/domains/hv-inversiones.com/public_html/sponsor/modelos/conexion.php:7
 Stack trace:
-#0 D:\Onedrive\www\sponsors\vistas\plantilla.php(75): include()
-#1 D:\Onedrive\www\sponsors\controladores\plantilla.controlador.php(7): include('D:\\Onedrive\\www...')
-#2 D:\Onedrive\www\sponsors\index.php(25): ControladorPlantilla->ctrPlantilla()
-#3 {main}
-  thrown in D:\Onedrive\www\sponsors\vistas\paginas\ingreso\registro.php on line 110
-[03-Apr-2025 00:37:35 Europe/Berlin] PHP Parse error:  syntax error, unexpected token "public", expecting "::" in D:\Onedrive\www\sponsors\controladores\usuarios.controlador.php on line 378
-[03-Apr-2025 01:23:53 Europe/Berlin] PHP Parse error:  syntax error, unexpected token "class", expecting "," or ";" in D:\Onedrive\www\sponsors\controladores\usuarios.controlador.php on line 67
-[03-Apr-2025 16:22:05 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type bool in D:\Onedrive\www\sponsors\controladores\usuarios.controlador.php on line 180
-[03-Apr-2025 16:22:05 Europe/Berlin] PHP Warning:  Undefined array key "perfil" in D:\Onedrive\www\sponsors\controladores\usuarios.controlador.php on line 226
-[03-Apr-2025 16:22:05 Europe/Berlin] PHP Warning:  Undefined array key "detalle_ip" in D:\Onedrive\www\sponsors\controladores\usuarios.controlador.php on line 229
-[03-Apr-2025 16:22:05 Europe/Berlin] PHP Fatal error:  Uncaught Error: Call to undefined method ModeloUsuarios::mdlRegistroUsuario() in D:\Onedrive\www\sponsors\controladores\usuarios.controlador.php:236
+#0 /home/u539586759/domains/hv-inversiones.com/public_html/sponsor/modelos/conexion.php(7): PDO->__construct()
+#1 /home/u539586759/domains/hv-inversiones.com/public_html/sponsor/modelos/usuarios.modelo.php(15): Conexion::conectar()
+#2 /home/u539586759/domains/hv-inversiones.com/public_html/sponsor/controladores/usuarios.controlador.php(26): ModeloUsuarios::mdlMostrarUsuarios()
+#3 /home/u539586759/domains/hv-inversiones.com/public_html/sponsor/vistas/paginas/ingreso/login.php(155): ControladorUsuarios::ctrLoginUsuario()
+#4 /home/u539586759/domains/hv-inversiones.com/public_html/sponsor/vistas/plantilla.php(82): include('/home/u53958675...')
+#5 /home/u539586759/domains/hv-inversiones.com/public_html/sponsor/controladores/plantilla.controlador.php(7): include('/home/u53958675...')
+#6 /home/u539586759/domains/hv-inversiones.com/public_html/sponsor/index.php(25): ControladorPlantilla->ctrPlantilla()
+#7 {main}
+  thrown in /home/u539586759/domains/hv-inversiones.com/public_html/sponsor/modelos/conexion.php on line 7
+[06-Apr-2025 18:40:27 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [1045] Access denied for user 'u539586759_hvsponsors'@'localhost' (using password: YES) in /home/u539586759/domains/hv-inversiones.com/public_html/sponsor/modelos/conexion.php:7
 Stack trace:
-#0 D:\Onedrive\www\sponsors\vistas\paginas\ingreso\registro.php(252): ControladorUsuarios::ctrRegistroUsuario()
-#1 D:\Onedrive\www\sponsors\vistas\plantilla.php(80): include('D:\\Onedrive\\www...')
-#2 D:\Onedrive\www\sponsors\controladores\plantilla.controlador.php(7): include('D:\\Onedrive\\www...')
-#3 D:\Onedrive\www\sponsors\index.php(29): ControladorPlantilla->ctrPlantilla()
-#4 {main}
-  thrown in D:\Onedrive\www\sponsors\controladores\usuarios.controlador.php on line 236
-[03-Apr-2025 17:56:35 Europe/Berlin] PHP Warning:  Undefined array key "csrf_token" in D:\Onedrive\www\sponsors\vistas\paginas\ingreso\login.php on line 44
-[03-Apr-2025 17:56:35 Europe/Berlin] Error de login: Solicitud inválida
-[03-Apr-2025 17:56:35 Europe/Berlin] PHP Warning:  Cannot modify header information - headers already sent by (output started at D:\Onedrive\www\sponsors\vistas\paginas\ingreso\login.php:44) in D:\Onedrive\www\sponsors\controladores\usuarios.controlador.php on line 88
-[03-Apr-2025 17:57:10 Europe/Berlin] Error de login: Solicitud inválida
-[03-Apr-2025 17:57:10 Europe/Berlin] PHP Warning:  Cannot modify header information - headers already sent by (output started at D:\Onedrive\www\sponsors\vistas\paginas\ingreso\login.php:46) in D:\Onedrive\www\sponsors\controladores\usuarios.controlador.php on line 88
-[03-Apr-2025 18:00:37 Europe/Berlin] Error de login: Solicitud inválida
-[03-Apr-2025 18:00:37 Europe/Berlin] PHP Warning:  Cannot modify header information - headers already sent by (output started at D:\Onedrive\www\sponsors\vistas\paginas\ingreso\login.php:46) in D:\Onedrive\www\sponsors\controladores\usuarios.controlador.php on line 88
-[03-Apr-2025 18:00:39 Europe/Berlin] Error de login: Solicitud inválida
-[03-Apr-2025 18:00:39 Europe/Berlin] PHP Warning:  Cannot modify header information - headers already sent by (output started at D:\Onedrive\www\sponsors\vistas\paginas\ingreso\login.php:46) in D:\Onedrive\www\sponsors\controladores\usuarios.controlador.php on line 88
-[03-Apr-2025 18:02:17 Europe/Berlin] Error de login: Solicitud inválida
-[03-Apr-2025 18:02:51 Europe/Berlin] Error de login: Solicitud inválida
-[03-Apr-2025 18:11:27 Europe/Berlin] Error de login: Solicitud inválida
-[03-Apr-2025 19:39:12 Europe/Berlin] Error de login: Solicitud inválida
-[03-Apr-2025 19:39:18 Europe/Berlin] Error de login: Solicitud inválida
-[03-Apr-2025 19:41:03 Europe/Berlin] Error de login: Solicitud inválida
-[03-Apr-2025 19:41:40 Europe/Berlin] Error de login: Solicitud inválida
-[03-Apr-2025 19:42:33 Europe/Berlin] Error de login: Solicitud inválida
-[03-Apr-2025 19:43:14 Europe/Berlin] Error de login: Solicitud inválida
-[03-Apr-2025 19:43:19 Europe/Berlin] Error de login: Solicitud inválida
-[03-Apr-2025 19:43:47 Europe/Berlin] Error de login: SQLSTATE[HY000] [2002] No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión
-[03-Apr-2025 19:44:52 Europe/Berlin] Error de login: Credenciales incorrectas
-[03-Apr-2025 19:45:04 Europe/Berlin] Error de login: Credenciales incorrectas
-[03-Apr-2025 19:47:29 Europe/Berlin] Error de login: Solicitud inválida
-[03-Apr-2025 19:47:38 Europe/Berlin] Error de login: Demasiados intentos fallidos. Espere 5 segundos
-[03-Apr-2025 19:48:39 Europe/Berlin] Error de login: Solicitud inválida
-[03-Apr-2025 19:48:48 Europe/Berlin] Error de login: Demasiados intentos fallidos. Espere 5 segundos
-[03-Apr-2025 20:00:35 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type bool in D:\Onedrive\www\sponsors\controladores\usuarios.controlador.php on line 25
-[03-Apr-2025 20:14:12 Europe/Berlin] PHP Warning:  include(paginas/modulos/header.php): Failed to open stream: No such file or directory in D:\Onedrive\www\sponsors\vistas\plantilla.php on line 107
-[03-Apr-2025 20:14:12 Europe/Berlin] PHP Warning:  include(): Failed opening 'paginas/modulos/header.php' for inclusion (include_path='D:\xampp\php\PEAR') in D:\Onedrive\www\sponsors\vistas\plantilla.php on line 107
-[03-Apr-2025 20:14:12 Europe/Berlin] PHP Warning:  include(paginas/modulos/menu.php): Failed to open stream: No such file or directory in D:\Onedrive\www\sponsors\vistas\plantilla.php on line 108
-[03-Apr-2025 20:14:12 Europe/Berlin] PHP Warning:  include(): Failed opening 'paginas/modulos/menu.php' for inclusion (include_path='D:\xampp\php\PEAR') in D:\Onedrive\www\sponsors\vistas\plantilla.php on line 108
-[03-Apr-2025 20:14:12 Europe/Berlin] PHP Warning:  include(paginas/inicio/inicio.php): Failed to open stream: No such file or directory in D:\Onedrive\www\sponsors\vistas\plantilla.php on line 120
-[03-Apr-2025 20:14:12 Europe/Berlin] PHP Warning:  include(): Failed opening 'paginas/inicio/inicio.php' for inclusion (include_path='D:\xampp\php\PEAR') in D:\Onedrive\www\sponsors\vistas\plantilla.php on line 120
-[03-Apr-2025 20:14:12 Europe/Berlin] PHP Warning:  include(paginas/modulos/footer.php): Failed to open stream: No such file or directory in D:\Onedrive\www\sponsors\vistas\plantilla.php on line 133
-[03-Apr-2025 20:14:12 Europe/Berlin] PHP Warning:  include(): Failed opening 'paginas/modulos/footer.php' for inclusion (include_path='D:\xampp\php\PEAR') in D:\Onedrive\www\sponsors\vistas\plantilla.php on line 133
-[03-Apr-2025 20:16:42 Europe/Berlin] PHP Warning:  include(paginas/modulos/footer.php): Failed to open stream: No such file or directory in D:\Onedrive\www\sponsors\vistas\plantilla.php on line 133
-[03-Apr-2025 20:16:42 Europe/Berlin] PHP Warning:  include(): Failed opening 'paginas/modulos/footer.php' for inclusion (include_path='D:\xampp\php\PEAR') in D:\Onedrive\www\sponsors\vistas\plantilla.php on line 133
-[04-Apr-2025 18:09:21 Europe/Berlin] PHP Warning:  include(paginas/perfil/perfil.php): Failed to open stream: No such file or directory in D:\Onedrive\www\sponsors\vistas\plantilla.php on line 121
-[04-Apr-2025 18:09:21 Europe/Berlin] PHP Warning:  include(): Failed opening 'paginas/perfil/perfil.php' for inclusion (include_path='D:\xampp\php\PEAR') in D:\Onedrive\www\sponsors\vistas\plantilla.php on line 121
-[04-Apr-2025 18:33:43 Europe/Berlin] PHP Warning:  Undefined array key "telefono" in D:\Onedrive\www\sponsors\vistas\paginas\perfil\perfil.php on line 159
-[04-Apr-2025 18:33:43 Europe/Berlin] PHP Warning:  Undefined array key "fecha_registro" in D:\Onedrive\www\sponsors\vistas\paginas\perfil\perfil.php on line 173
-[04-Apr-2025 18:33:43 Europe/Berlin] PHP Warning:  Undefined array key "ciudad" in D:\Onedrive\www\sponsors\vistas\paginas\perfil\perfil.php on line 209
-[04-Apr-2025 18:33:43 Europe/Berlin] PHP Warning:  Undefined array key "pais" in D:\Onedrive\www\sponsors\vistas\paginas\perfil\perfil.php on line 216
-[04-Apr-2025 18:33:43 Europe/Berlin] PHP Warning:  Undefined array key "descripcion" in D:\Onedrive\www\sponsors\vistas\paginas\perfil\perfil.php on line 230
-[04-Apr-2025 18:36:06 Europe/Berlin] PHP Warning:  Undefined array key "telefono" in D:\Onedrive\www\sponsors\vistas\paginas\perfil\perfil.php on line 170
-[04-Apr-2025 18:36:06 Europe/Berlin] PHP Warning:  Undefined array key "fecha_registro" in D:\Onedrive\www\sponsors\vistas\paginas\perfil\perfil.php on line 184
-[04-Apr-2025 18:36:06 Europe/Berlin] PHP Warning:  Undefined array key "ciudad" in D:\Onedrive\www\sponsors\vistas\paginas\perfil\perfil.php on line 220
-[04-Apr-2025 18:36:06 Europe/Berlin] PHP Warning:  Undefined array key "pais" in D:\Onedrive\www\sponsors\vistas\paginas\perfil\perfil.php on line 227
-[04-Apr-2025 18:36:06 Europe/Berlin] PHP Warning:  Undefined array key "descripcion" in D:\Onedrive\www\sponsors\vistas\paginas\perfil\perfil.php on line 241
-[04-Apr-2025 18:37:59 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type bool in D:\Onedrive\www\sponsors\vistas\paginas\perfil\perfil.php on line 52
-[04-Apr-2025 18:37:59 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type bool in D:\Onedrive\www\sponsors\vistas\paginas\perfil\perfil.php on line 52
-[04-Apr-2025 18:37:59 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type bool in D:\Onedrive\www\sponsors\vistas\paginas\perfil\perfil.php on line 53
-[04-Apr-2025 18:37:59 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type bool in D:\Onedrive\www\sponsors\vistas\paginas\perfil\perfil.php on line 156
-[04-Apr-2025 18:37:59 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type bool in D:\Onedrive\www\sponsors\vistas\paginas\perfil\perfil.php on line 163
-[04-Apr-2025 18:37:59 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type bool in D:\Onedrive\www\sponsors\vistas\paginas\perfil\perfil.php on line 170
-[04-Apr-2025 18:37:59 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type bool in D:\Onedrive\www\sponsors\vistas\paginas\perfil\perfil.php on line 177
-[04-Apr-2025 18:37:59 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type bool in D:\Onedrive\www\sponsors\vistas\paginas\perfil\perfil.php on line 184
-[04-Apr-2025 18:37:59 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type bool in D:\Onedrive\www\sponsors\vistas\paginas\perfil\perfil.php on line 220
-[04-Apr-2025 18:37:59 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type bool in D:\Onedrive\www\sponsors\vistas\paginas\perfil\perfil.php on line 227
-[04-Apr-2025 18:37:59 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type bool in D:\Onedrive\www\sponsors\vistas\paginas\perfil\perfil.php on line 241
-[04-Apr-2025 18:39:52 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type bool in D:\Onedrive\www\sponsors\vistas\paginas\perfil\perfil.php on line 52
-[04-Apr-2025 18:39:52 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type bool in D:\Onedrive\www\sponsors\vistas\paginas\perfil\perfil.php on line 52
-[04-Apr-2025 18:39:52 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type bool in D:\Onedrive\www\sponsors\vistas\paginas\perfil\perfil.php on line 53
-[04-Apr-2025 18:39:52 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type bool in D:\Onedrive\www\sponsors\vistas\paginas\perfil\perfil.php on line 156
-[04-Apr-2025 18:39:52 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type bool in D:\Onedrive\www\sponsors\vistas\paginas\perfil\perfil.php on line 163
-[04-Apr-2025 18:39:52 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type bool in D:\Onedrive\www\sponsors\vistas\paginas\perfil\perfil.php on line 170
-[04-Apr-2025 18:39:52 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type bool in D:\Onedrive\www\sponsors\vistas\paginas\perfil\perfil.php on line 177
-[04-Apr-2025 18:39:52 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type bool in D:\Onedrive\www\sponsors\vistas\paginas\perfil\perfil.php on line 184
-[04-Apr-2025 18:39:52 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type bool in D:\Onedrive\www\sponsors\vistas\paginas\perfil\perfil.php on line 220
-[04-Apr-2025 18:39:52 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type bool in D:\Onedrive\www\sponsors\vistas\paginas\perfil\perfil.php on line 227
-[04-Apr-2025 18:39:52 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type bool in D:\Onedrive\www\sponsors\vistas\paginas\perfil\perfil.php on line 241
-[04-Apr-2025 18:41:05 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type bool in D:\Onedrive\www\sponsors\vistas\paginas\perfil\perfil.php on line 53
-[04-Apr-2025 18:41:05 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type bool in D:\Onedrive\www\sponsors\vistas\paginas\perfil\perfil.php on line 53
-[04-Apr-2025 18:41:05 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type bool in D:\Onedrive\www\sponsors\vistas\paginas\perfil\perfil.php on line 54
-[04-Apr-2025 18:41:05 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type bool in D:\Onedrive\www\sponsors\vistas\paginas\perfil\perfil.php on line 157
-[04-Apr-2025 18:41:05 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type bool in D:\Onedrive\www\sponsors\vistas\paginas\perfil\perfil.php on line 164
-[04-Apr-2025 18:41:05 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type bool in D:\Onedrive\www\sponsors\vistas\paginas\perfil\perfil.php on line 171
-[04-Apr-2025 18:41:05 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type bool in D:\Onedrive\www\sponsors\vistas\paginas\perfil\perfil.php on line 178
-[04-Apr-2025 18:41:05 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type bool in D:\Onedrive\www\sponsors\vistas\paginas\perfil\perfil.php on line 185
-[04-Apr-2025 18:41:05 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type bool in D:\Onedrive\www\sponsors\vistas\paginas\perfil\perfil.php on line 221
-[04-Apr-2025 18:41:05 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type bool in D:\Onedrive\www\sponsors\vistas\paginas\perfil\perfil.php on line 228
-[04-Apr-2025 18:41:05 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type bool in D:\Onedrive\www\sponsors\vistas\paginas\perfil\perfil.php on line 242
-[04-Apr-2025 18:41:28 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type bool in D:\Onedrive\www\sponsors\vistas\paginas\perfil\perfil.php on line 53
-[04-Apr-2025 18:41:28 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type bool in D:\Onedrive\www\sponsors\vistas\paginas\perfil\perfil.php on line 53
-[04-Apr-2025 18:41:28 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type bool in D:\Onedrive\www\sponsors\vistas\paginas\perfil\perfil.php on line 54
-[04-Apr-2025 18:41:28 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type bool in D:\Onedrive\www\sponsors\vistas\paginas\perfil\perfil.php on line 157
-[04-Apr-2025 18:41:28 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type bool in D:\Onedrive\www\sponsors\vistas\paginas\perfil\perfil.php on line 164
-[04-Apr-2025 18:41:28 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type bool in D:\Onedrive\www\sponsors\vistas\paginas\perfil\perfil.php on line 171
-[04-Apr-2025 18:41:28 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type bool in D:\Onedrive\www\sponsors\vistas\paginas\perfil\perfil.php on line 178
-[04-Apr-2025 18:41:28 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type bool in D:\Onedrive\www\sponsors\vistas\paginas\perfil\perfil.php on line 185
-[04-Apr-2025 18:41:28 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type bool in D:\Onedrive\www\sponsors\vistas\paginas\perfil\perfil.php on line 221
-[04-Apr-2025 18:41:28 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type bool in D:\Onedrive\www\sponsors\vistas\paginas\perfil\perfil.php on line 228
-[04-Apr-2025 18:41:28 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type bool in D:\Onedrive\www\sponsors\vistas\paginas\perfil\perfil.php on line 242
+#0 /home/u539586759/domains/hv-inversiones.com/public_html/sponsor/modelos/conexion.php(7): PDO->__construct()
+#1 /home/u539586759/domains/hv-inversiones.com/public_html/sponsor/modelos/usuarios.modelo.php(15): Conexion::conectar()
+#2 /home/u539586759/domains/hv-inversiones.com/public_html/sponsor/controladores/usuarios.controlador.php(26): ModeloUsuarios::mdlMostrarUsuarios()
+#3 /home/u539586759/domains/hv-inversiones.com/public_html/sponsor/vistas/paginas/ingreso/login.php(155): ControladorUsuarios::ctrLoginUsuario()
+#4 /home/u539586759/domains/hv-inversiones.com/public_html/sponsor/vistas/plantilla.php(82): include('/home/u53958675...')
+#5 /home/u539586759/domains/hv-inversiones.com/public_html/sponsor/controladores/plantilla.controlador.php(7): include('/home/u53958675...')
+#6 /home/u539586759/domains/hv-inversiones.com/public_html/sponsor/index.php(25): ControladorPlantilla->ctrPlantilla()
+#7 {main}
+  thrown in /home/u539586759/domains/hv-inversiones.com/public_html/sponsor/modelos/conexion.php on line 7
+[06-Apr-2025 18:40:37 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [1045] Access denied for user 'u539586759_hvsponsors'@'localhost' (using password: YES) in /home/u539586759/domains/hv-inversiones.com/public_html/sponsor/modelos/conexion.php:7
+Stack trace:
+#0 /home/u539586759/domains/hv-inversiones.com/public_html/sponsor/modelos/conexion.php(7): PDO->__construct()
+#1 /home/u539586759/domains/hv-inversiones.com/public_html/sponsor/modelos/usuarios.modelo.php(15): Conexion::conectar()
+#2 /home/u539586759/domains/hv-inversiones.com/public_html/sponsor/controladores/usuarios.controlador.php(26): ModeloUsuarios::mdlMostrarUsuarios()
+#3 /home/u539586759/domains/hv-inversiones.com/public_html/sponsor/vistas/paginas/ingreso/login.php(155): ControladorUsuarios::ctrLoginUsuario()
+#4 /home/u539586759/domains/hv-inversiones.com/public_html/sponsor/vistas/plantilla.php(82): include('/home/u53958675...')
+#5 /home/u539586759/domains/hv-inversiones.com/public_html/sponsor/controladores/plantilla.controlador.php(7): include('/home/u53958675...')
+#6 /home/u539586759/domains/hv-inversiones.com/public_html/sponsor/index.php(25): ControladorPlantilla->ctrPlantilla()
+#7 {main}
+  thrown in /home/u539586759/domains/hv-inversiones.com/public_html/sponsor/modelos/conexion.php on line 7
+[06-Apr-2025 18:42:03 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [1045] Access denied for user 'u539586759_sponsor'@'localhost' (using password: YES) in /home/u539586759/domains/hv-inversiones.com/public_html/sponsor/modelos/conexion.php:7
+Stack trace:
+#0 /home/u539586759/domains/hv-inversiones.com/public_html/sponsor/modelos/conexion.php(7): PDO->__construct()
+#1 /home/u539586759/domains/hv-inversiones.com/public_html/sponsor/modelos/usuarios.modelo.php(15): Conexion::conectar()
+#2 /home/u539586759/domains/hv-inversiones.com/public_html/sponsor/controladores/usuarios.controlador.php(26): ModeloUsuarios::mdlMostrarUsuarios()
+#3 /home/u539586759/domains/hv-inversiones.com/public_html/sponsor/vistas/paginas/ingreso/login.php(155): ControladorUsuarios::ctrLoginUsuario()
+#4 /home/u539586759/domains/hv-inversiones.com/public_html/sponsor/vistas/plantilla.php(82): include('/home/u53958675...')
+#5 /home/u539586759/domains/hv-inversiones.com/public_html/sponsor/controladores/plantilla.controlador.php(7): include('/home/u53958675...')
+#6 /home/u539586759/domains/hv-inversiones.com/public_html/sponsor/index.php(25): ControladorPlantilla->ctrPlantilla()
+#7 {main}
+  thrown in /home/u539586759/domains/hv-inversiones.com/public_html/sponsor/modelos/conexion.php on line 7
+[06-Apr-2025 18:53:28 UTC] PHP Warning:  Trying to access array offset on value of type bool in /home/u539586759/domains/hv-inversiones.com/public_html/sponsor/controladores/usuarios.controlador.php on line 114
+[06-Apr-2025 19:20:13 UTC] PHP Warning:  Trying to access array offset on value of type bool in /home/u539586759/domains/hv-inversiones.com/public_html/sponsor/controladores/usuarios.controlador.php on line 32
+[06-Apr-2025 19:20:41 UTC] PHP Warning:  Trying to access array offset on value of type bool in /home/u539586759/domains/hv-inversiones.com/public_html/sponsor/controladores/usuarios.controlador.php on line 32
+[06-Apr-2025 19:21:42 UTC] PHP Warning:  Trying to access array offset on value of type bool in /home/u539586759/domains/hv-inversiones.com/public_html/sponsor/controladores/usuarios.controlador.php on line 122

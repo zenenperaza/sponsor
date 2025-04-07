@@ -45,10 +45,10 @@ class ModeloUsuarios{
 
 		$stmt = Conexion::conectar()->prepare("INSERT INTO $tabla 
 			(nombre, apellido, email, perfil, password, telefono, pais, ciudad, 
-			 id_patrocinador, id_usuario, verificacion, email_encriptado) 
+			 padre_id, id_usuario, verificacion, email_encriptado) 
 			VALUES 
 			(:nombre, :apellido, :email, :perfil, :password, :telefono, :pais, :ciudad, 
-			 :id_patrocinador, :id_usuario, :verificacion, :email_encriptado)");
+			 :padre_id, :id_usuario, :verificacion, :email_encriptado)");
 	
 		// Bind de parámetros
 		
@@ -61,7 +61,7 @@ class ModeloUsuarios{
 		$stmt->bindParam(":telefono", $datos["telefono"], PDO::PARAM_STR);
 		$stmt->bindParam(":pais", $datos["pais"], PDO::PARAM_STR);
 		$stmt->bindParam(":ciudad", $datos["ciudad"], PDO::PARAM_STR);
-		$stmt->bindParam(":id_patrocinador", $datos["id_patrocinador"], PDO::PARAM_STR);
+		$stmt->bindParam(":padre_id", $datos["padre_id"], PDO::PARAM_STR);
 		$stmt->bindParam(":verificacion", $datos["verificacion"], PDO::PARAM_INT);
 		$stmt->bindParam(":email_encriptado", $datos["email_encriptado"], PDO::PARAM_STR);
 	
